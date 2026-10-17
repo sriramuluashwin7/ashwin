@@ -1,0 +1,586 @@
+<!doctype html>
+<!--
+  Personal site of Ashwin Sriramulu. Single file, no build step.
+  To publish on GitHub Pages: put this file at the root of a repository named
+  <your-github-username>.github.io and push.
+
+  Things to edit:
+    1. Contact links: search for "CONTACT LINKS" below. GitHub and LinkedIn are
+       commented out until you add your usernames.
+    2. HYDRA-MC link: it currently opens an IEEE Xplore search for the title.
+       Replace it with the DOI link once you have it (search for "DOI").
+    3. Venture statuses are dated "October 2026"; update them as things change.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashwin Sriramulu</title>
+<meta name="description" content="Ashwin Sriramulu: founder of Arvorean Robotics and Automation, final-year B.Tech student at SRM Institute of Science and Technology, Chennai. Research, ventures and contact.">
+<meta property="og:title" content="Ashwin Sriramulu">
+<meta property="og:description" content="Founder of Arvorean Robotics and Automation. Research in machine learning and engineering. Chennai, India.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F3F5F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F151B" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12.5' fill='none' stroke='%230E4470' stroke-width='4'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%230E4470'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@500&amp;text=%E0%AE%89%E0%AE%A3%E0%AF%8D%E0%AE%AE%E0%AF%88&amp;display=swap">
+<style>
+  :root {
+    --paper: #F3F5F4;
+    --ink: #17212B;
+    --ink-soft: #4E5A66;
+    --rule: #C8D0D5;
+    --accent: #0E4470;
+    --accent-line: rgba(14, 68, 112, .42);
+    --hatch: rgba(23, 33, 43, .40);
+    --coil: #0E4470;
+    --measure: 36rem;
+    --label-col: 9rem;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0F151B;
+      --ink: #E2E7EB;
+      --ink-soft: #9AA7B2;
+      --rule: #2B3743;
+      --accent: #8EB9E0;
+      --accent-line: rgba(142, 185, 224, .45);
+      --hatch: rgba(226, 231, 235, .36);
+      --coil: #6FA3D6;
+    }
+  }
+
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "EB Garamond", Garamond, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--accent-line); }
+
+  a {
+    color: var(--accent);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--accent-line);
+    text-underline-offset: .17em;
+  }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  p { margin: 0 0 .85em; }
+  p:last-child { margin-bottom: 0; }
+
+  .page { max-width: 57rem; margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 48rem) { .page { padding: 0 2.5rem; } }
+
+  /* ---------- opening ---------- */
+  .hero {
+    display: grid;
+    grid-template-areas: "head" "fig" "body";
+    gap: 1.75rem;
+    padding: 3rem 0 3.25rem;
+  }
+  .hero-head { grid-area: head; }
+  .hero-body { grid-area: body; }
+  h1 {
+    font-weight: 500;
+    font-size: clamp(2.5rem, 5.6vw, 3.55rem);
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    margin: 0 0 .9rem;
+  }
+  .roles { list-style: none; margin: 0; padding: 0; color: var(--ink-soft); line-height: 1.4; }
+  .roles li + li { margin-top: .2rem; }
+  .intro { max-width: var(--measure); margin: 0 0 1.4rem; }
+  .toc ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: .2rem 1.15rem;
+  }
+
+  .motor { grid-area: fig; margin: 0; width: 100%; max-width: 19rem; justify-self: center; }
+  .motor-button {
+    display: block; width: 100%; padding: 0; margin: 0;
+    border: 0; background: none; color: inherit; font: inherit; cursor: pointer;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .motor-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .motor svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .motor figcaption {
+    margin-top: .8rem;
+    font-size: .85em;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+  .motor .iron { stroke: var(--ink); stroke-width: 1.1; stroke-linejoin: round; fill-rule: evenodd; }
+  .motor .rotor .iron { fill: url(#hatch-rotor); }
+  .motor .stator .iron { fill: url(#hatch-stator); }
+  .motor .hatch-line { stroke: var(--hatch); stroke-width: 1; }
+  .motor .coil { fill: var(--coil); }
+  .motor .centre { fill: none; stroke: var(--ink-soft); stroke-width: .8; stroke-dasharray: 16 3 2 3; }
+  .motor .leader { fill: none; stroke: var(--ink-soft); stroke-width: .8; }
+  .motor .leader-end { fill: var(--ink-soft); }
+  .motor .note { font-family: inherit; font-style: italic; font-size: 16.5px; fill: var(--ink-soft); }
+
+  @media (min-width: 52rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "head fig" "body fig";
+      column-gap: 3.5rem;
+      row-gap: 1.6rem;
+      padding: 5rem 0 4.25rem;
+    }
+    .motor { max-width: 20rem; align-self: center; }
+  }
+
+  /* ---------- sections ---------- */
+  section.part { border-top: 1px solid var(--rule); padding: 3rem 0 3.25rem; }
+  h2 {
+    font-weight: 500;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -.005em;
+    margin: 0 0 1.1rem;
+  }
+  .lead { max-width: var(--measure); margin-bottom: 1.6rem; }
+  .motto {
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin: .2rem 0 .9rem;
+  }
+  .fine { font-size: .87em; color: var(--ink-soft); max-width: var(--measure); }
+
+  /* Rows: a narrow label column and a text column */
+  .rows { margin: 0; padding: 0; list-style: none; }
+  .row {
+    display: grid;
+    grid-template-columns: var(--label-col) minmax(0, var(--measure));
+    column-gap: 1.5rem;
+    padding: .95rem 0;
+  }
+  .row + .row { border-top: 0; }
+  .label {
+    font-size: .87em;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin: 0;
+    padding-top: .18em;
+    line-height: 1.4;
+  }
+  .nowrap { white-space: nowrap; }
+  .label .role { display: block; font-style: normal; color: var(--ink); }
+  .row-body > * + * { margin-top: .45em; }
+  .entry + .entry { margin-top: 1.35rem; }
+
+  h3, h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 .3em;
+  }
+  .org { color: var(--ink-soft); margin: 0 0 .35em; }
+  .cite { font-weight: 400; }
+  .cite .title { font-style: italic; }
+  .ta { font-family: "Noto Serif Tamil", "Tamil Sangam MN", "Latha", serif; font-weight: 500; font-size: .92em; margin-left: .3em; color: var(--ink-soft); }
+
+  ul.plain { margin: 0; padding-left: 1.1em; }
+  ul.plain li + li { margin-top: .35em; }
+
+  .numbers { font-variant-numeric: lining-nums tabular-nums; letter-spacing: .01em; }
+
+  .contact-links { list-style: none; margin: 1rem 0 0; padding: 0; }
+  .contact-links li + li { margin-top: .3rem; }
+
+  footer { border-top: 1px solid var(--rule); padding: 1.5rem 0 3rem; font-size: .85em; color: var(--ink-soft); }
+
+  @media (max-width: 40rem) {
+    .row { grid-template-columns: minmax(0, 1fr); row-gap: .25rem; }
+    .label { padding-top: 0; }
+    .label .role { display: inline; }
+    .label .role::after { content: ","; margin-right: .3em; }
+    .rows .row { padding: .8rem 0; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; font-size: 11pt; }
+    .toc, .hint { display: none; }
+    a { color: #000; text-decoration: none; }
+    section.part { break-inside: avoid-page; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="hero-head">
+      <h1>Ashwin Sriramulu</h1>
+      <ul class="roles">
+        <li>Founder and Director, Arvorean Robotics and Automation</li>
+        <li>B.Tech, final year, SRM Institute of Science and Technology</li>
+        <li>Chennai, India</li>
+      </ul>
+    </div>
+
+    <figure class="motor">
+      <button class="motor-button" id="motor-button" type="button" aria-label="Advance the rotor in the drawing by one step">
+        <svg viewBox="0 0 400 400" role="img" aria-labelledby="motor-title motor-desc">
+          <title id="motor-title">Cross-section of a 12/10 outer-rotor doubly-salient motor</title>
+          <desc id="motor-desc">Schematic drawing. An outer rotor with ten inward-facing poles surrounds a stationary stator with twelve outward-facing poles, with windings in the slots between the stator poles.</desc>
+          <defs>
+            <pattern id="hatch-rotor" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line class="hatch-line" x1="2.5" y1="0" x2="2.5" y2="5"/>
+            </pattern>
+            <pattern id="hatch-stator" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+              <line class="hatch-line" x1="2.5" y1="0" x2="2.5" y2="5"/>
+            </pattern>
+          </defs>
+
+          <g class="rotor" id="rotor">
+            <path class="iron" d="M350.0 200.0A150 150 0 1 1 50.0 200.0A150 150 0 1 1 350.0 200.0ZM184.7 72.9L184.7 91.1A110 110 0 0 1 215.3 91.1L215.3 72.9A128 128 0 0 1 262.3 88.2L251.6 102.9A110 110 0 0 1 276.4 120.9L287.1 106.2A128 128 0 0 1 316.1 146.2L298.9 151.8A110 110 0 0 1 308.3 180.9L325.6 175.3A128 128 0 0 1 325.6 224.7L308.3 219.1A110 110 0 0 1 298.9 248.2L316.1 253.8A128 128 0 0 1 287.1 293.8L276.4 279.1A110 110 0 0 1 251.6 297.1L262.3 311.8A128 128 0 0 1 215.3 327.1L215.3 308.9A110 110 0 0 1 184.7 308.9L184.7 327.1A128 128 0 0 1 137.7 311.8L148.4 297.1A110 110 0 0 1 123.6 279.1L112.9 293.8A128 128 0 0 1 83.9 253.8L101.1 248.2A110 110 0 0 1 91.7 219.1L74.4 224.7A128 128 0 0 1 74.4 175.3L91.7 180.9A110 110 0 0 1 101.1 151.8L83.9 146.2A128 128 0 0 1 112.9 106.2L123.6 120.9A110 110 0 0 1 148.4 102.9L137.7 88.2A128 128 0 0 1 184.7 72.9Z"/>
+          </g>
+
+          <g class="stator">
+            <path class="iron" d="M187.8 131.1L187.8 93.2A107.5 107.5 0 0 1 212.2 93.2L212.2 131.1A70 70 0 0 1 223.9 134.2L242.9 101.4A107.5 107.5 0 0 1 263.9 113.6L245.0 146.4A70 70 0 0 1 253.6 155.0L286.4 136.1A107.5 107.5 0 0 1 298.6 157.1L265.8 176.1A70 70 0 0 1 268.9 187.8L306.8 187.8A107.5 107.5 0 0 1 306.8 212.2L268.9 212.2A70 70 0 0 1 265.8 223.9L298.6 242.9A107.5 107.5 0 0 1 286.4 263.9L253.6 245.0A70 70 0 0 1 245.0 253.6L263.9 286.4A107.5 107.5 0 0 1 242.9 298.6L223.9 265.8A70 70 0 0 1 212.2 268.9L212.2 306.8A107.5 107.5 0 0 1 187.8 306.8L187.8 268.9A70 70 0 0 1 176.1 265.8L157.1 298.6A107.5 107.5 0 0 1 136.1 286.4L155.0 253.6A70 70 0 0 1 146.4 245.0L113.6 263.9A107.5 107.5 0 0 1 101.4 242.9L134.2 223.9A70 70 0 0 1 131.1 212.2L93.2 212.2A107.5 107.5 0 0 1 93.2 187.8L131.1 187.8A70 70 0 0 1 134.2 176.1L101.4 157.1A107.5 107.5 0 0 1 113.6 136.1L146.4 155.0A70 70 0 0 1 155.0 146.4L136.1 113.6A107.5 107.5 0 0 1 157.1 101.4L176.1 134.2A70 70 0 0 1 187.8 131.1ZM236.0 200.0A36 36 0 1 0 164.0 200.0A36 36 0 1 0 236.0 200.0Z"/>
+            <path class="coil" d="M213.6 127.3L213.6 97.4L225.7 99.7L218.1 128.2ZM186.4 127.3L186.4 97.4L174.3 99.7L181.9 128.2ZM248.1 143.8L263.1 117.9L272.4 126.0L251.5 146.9ZM224.6 130.2L239.6 104.4L227.8 100.3L220.2 128.8ZM269.8 175.4L295.6 160.4L299.7 172.2L271.2 179.8ZM256.2 151.9L282.1 136.9L274.0 127.6L253.1 148.5ZM272.7 213.6L302.6 213.6L300.3 225.7L271.8 218.1ZM272.7 186.4L302.6 186.4L300.3 174.3L271.8 181.9ZM256.2 248.1L282.1 263.1L274.0 272.4L253.1 251.5ZM269.8 224.6L295.6 239.6L299.7 227.8L271.2 220.2ZM224.6 269.8L239.6 295.6L227.8 299.7L220.2 271.2ZM248.1 256.2L263.1 282.1L272.4 274.0L251.5 253.1ZM186.4 272.7L186.4 302.6L174.3 300.3L181.9 271.8ZM213.6 272.7L213.6 302.6L225.7 300.3L218.1 271.8ZM151.9 256.2L136.9 282.1L127.6 274.0L148.5 253.1ZM175.4 269.8L160.4 295.6L172.2 299.7L179.8 271.2ZM130.2 224.6L104.4 239.6L100.3 227.8L128.8 220.2ZM143.8 248.1L117.9 263.1L126.0 272.4L146.9 251.5ZM127.3 186.4L97.4 186.4L99.7 174.3L128.2 181.9ZM127.3 213.6L97.4 213.6L99.7 225.7L128.2 218.1ZM143.8 151.9L117.9 136.9L126.0 127.6L146.9 148.5ZM130.2 175.4L104.4 160.4L100.3 172.2L128.8 179.8ZM175.4 130.2L160.4 104.4L172.2 100.3L179.8 128.8ZM151.9 143.8L136.9 117.9L127.6 126.0L148.5 146.9Z"/>
+          </g>
+
+          <path class="centre" d="M34 200H366M200 34V366"/>
+
+          <g aria-hidden="true">
+            <text class="note" x="12" y="24">outer rotor, 10 poles</text>
+            <path class="leader" d="M12 30H150L164.0 65.7"/>
+            <circle class="leader-end" cx="164.0" cy="65.7" r="2"/>
+
+            <text class="note" x="388" y="382" text-anchor="end">stator, 12 poles</text>
+            <path class="leader" d="M388 388H272L248.0 283.1"/>
+            <circle class="leader-end" cx="248.0" cy="283.1" r="2"/>
+
+            <text class="note" x="12" y="382">winding</text>
+            <path class="leader" d="M12 388H68L133.7 258.8"/>
+            <circle class="leader-end" cx="133.7" cy="258.8" r="2"/>
+          </g>
+        </svg>
+      </button>
+      <figcaption>
+        Schematic cross-section of a 12/10 outer-rotor doubly-salient motor, the topology of the switched reluctance motor I designed and validated in simulation. <span class="hint">Click or tap the drawing to advance the rotor by one step.</span>
+      </figcaption>
+    </figure>
+
+    <div class="hero-body">
+      <p class="intro">I founded Arvorean to build rovers that do heavy and dangerous manual work so that people do not have to. Alongside the company I do research in machine learning and engineering, on subjects that range from engine emissions and battery ageing to embedded control and speech recognition, and I am developing a few other ventures, most of them at an early stage. I am also enrolled in the online master’s programme in computer science at the University of Colorado Boulder.</p>
+      <nav class="toc" aria-label="Sections">
+        <ul>
+          <li><a href="#arvorean">Arvorean</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#ventures">Ventures</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="part" id="arvorean" aria-labelledby="arvorean-h">
+      <h2 id="arvorean-h">Arvorean Robotics and Automation</h2>
+      <p class="fine">Founder and Director since 2026. A private limited company registered in Tamil Nadu, corporate identification number <span class="numbers">U62010TN2026PTC195993</span>.</p>
+      <p class="motto">Automation against exploitation.</p>
+      <p class="lead">The company exists to keep people away from backbreaking and dangerous manual labour, such as moving half a tonne of goods an hour by hand in a warehouse or factory. Warehouses and factories come first; mines and similar places may follow.</p>
+
+      <ul class="rows">
+        <li class="row">
+          <div class="label">First product</div>
+          <div class="row-body">
+            <h3>The rover</h3>
+            <p>A wheeled rover built from bought and fabricated parts, so that the main risk lies in integration rather than in new invention. The current build is designed for a 30&nbsp;kg payload, with an aluminium-extrusion chassis, four planetary gearmotors each with its own driver, a Raspberry Pi 4B for vision and a Raspberry Pi Pico&nbsp;2 for motor control; the vision pipeline is under development. A separate four-motor tank-drive version, controlled from a web page through an ESP32, is already built. The firmware is designed as a strictly layered stack around a 1&nbsp;kHz deterministic control loop, with a bridge to ROS&nbsp;2 (Robot Operating System&nbsp;2). The plan is to rent rovers out as a fleet and to sell the same hardware as a research platform.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">Next</div>
+          <div class="row-body">
+            <h3>Laboratory kits</h3>
+            <p>A motor-control laboratory kit for university courses that follow the Anna University R2025 and SRM R2021 curricula. It is designed around a custom circular circuit board with an RP2350A microcontroller, a BTS7960B <span class="nowrap">H-bridge</span> driver and five motor modules, with motor speed estimated from an ADXL345 accelerometer by fast Fourier transform. An analogue characterisation kit and a 555-timer experimenter kit are planned to follow.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">Longer term</div>
+          <div class="row-body">
+            <h3>A switched reluctance motor</h3>
+            <p>A motor of my own design: a DC-excited, doubly-salient, outer-rotor machine with 12 stator poles and 10 rotor poles, validated by finite-element simulation in FEMM. It is to be paired with its own controller and a fixed, calculated gear reduction, so that the motor runs near its most efficient speed. Once mature it is meant to drive Arvorean’s rovers, and it may also be offered to other builders of mobile robots as a propulsion module. The design is the subject of a planned conference paper; the drawing at the top of this page shows its topology in schematic form.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="part" id="research" aria-labelledby="research-h">
+      <h2 id="research-h">Research</h2>
+      <p class="lead">My long-term interest is Koopman operator theory and Hilbert-space methods, and how they relate to the latent structure that neural networks learn. I have outlined a framework that connects regime-invariant feature learning with the construction of digital twins from first principles, drawing on Koopman operators, Volterra series and invariant causal prediction. My applied work, listed below, covers engine emissions, battery degradation, embedded control, classifier generalisation and speech recognition.</p>
+
+      <div class="rows">
+        <section class="row" aria-labelledby="g-published">
+          <h3 class="label" id="g-published">Journal paper</h3>
+          <div class="row-body">
+            <div class="entry">
+              <h4 class="cite">Ashwin Sriramulu and Jayakanth JJ, “<span class="title">Hybrid Dynamic Reconfigurable Architecture for Multi-Controller Autonomous Systems</span>” (HYDRA-MC), <em>IEEE Journal of the Electron Devices Society</em>, special issue. Early Access, 2026; final issue expected in 2027.</h4>
+              <p>First and corresponding author. The work included embedded firmware for Arduino Uno and Raspberry Pi Pico&nbsp;2 boards, Python simulation, and training of a temporal convolutional network.</p>
+              <!-- DOI: replace this search link with https://doi.org/<your DOI> once you have it -->
+              <p><a href="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&amp;queryText=%22Hybrid%20Dynamic%20Reconfigurable%20Architecture%20for%20Multi-Controller%20Autonomous%20Systems%22">Find it on IEEE Xplore</a></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="row" aria-labelledby="g-abstract">
+          <h3 class="label" id="g-abstract">Abstract accepted</h3>
+          <div class="row-body">
+            <div class="entry">
+              <h4>Hybrid digital twin of lithium-ion battery packs</h4>
+              <p>Accepted as an abstract at SAE WCX (SAE International’s World Congress Experience); work in progress. The paper proposes a digital twin that couples physics simulation in MATLAB Simscape Battery Builder with recurrent neural networks (long short-term memory and gated recurrent unit networks, LSTM and GRU) to estimate capacity fade, resistance growth, state of health and remaining useful life, and that uses observed patterns of degradation to suggest second-life uses for retired electric-vehicle (EV) packs. The simulated dataset is planned for open release.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="row" aria-labelledby="g-prep">
+          <h3 class="label" id="g-prep">In preparation</h3>
+          <div class="row-body">
+            <div class="entry">
+              <h4>ThermoStateNet</h4>
+              <p>A GRU-based framework for predicting nitrogen oxide (NOx) emissions from engines, in which the latent space is linearised along the lines of Koopman operator theory. It is evaluated on two engine datasets, with NASA’s C-MAPSS turbofan data as a cross-domain test, and its PyTorch code base is complete.</p>
+            </div>
+            <div class="entry">
+              <h4>Decision boundary fractal complexity</h4>
+              <p>A measure proposed as a classifier-agnostic predictor of the generalisation gap on tabular data: the box-counting dimension of the 1-nearest-neighbour decision boundary, measured after projecting the features with principal component analysis. A complete draft exists.</p>
+            </div>
+            <div class="entry">
+              <h4>ProsGuide</h4>
+              <p>A parameter-efficient adapter for speech recognition that feeds four simple prosodic features (fundamental frequency, energy, the change in energy, and zero-crossing rate) into a frozen Whisper-small encoder through cross-attention. First experiments on LibriSpeech are complete and a manuscript draft exists; a study of where in the encoder the adapter is best placed is planned.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="row" aria-labelledby="g-current">
+          <h3 class="label" id="g-current">Current</h3>
+          <div class="row-body">
+            <div class="entry">
+              <h4>Decentralised coordination of EV charging</h4>
+              <p>With a small team I am working towards a method for coordinating electric-vehicle charging without a central server, using pseudonymous messages exchanged between vehicles. The single objective is that no station is overcrowded while others stand empty. The reason for leaving out the server is privacy: a central server would let one company follow individual drivers’ routes over time. Early stage.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="row" aria-labelledby="g-earlier">
+          <h3 class="label" id="g-earlier">Earlier</h3>
+          <div class="row-body">
+            <ul class="plain">
+              <li>Bearing fault diagnosis using contrastive learning under class imbalance.</li>
+              <li>Oil-spill detection in synthetic aperture radar (SAR) imagery.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="row" aria-labelledby="g-tools">
+          <h3 class="label" id="g-tools">Tools</h3>
+          <div class="row-body">
+            <ul class="plain">
+              <li>A local archive of arXiv metadata covering about three million papers, with full-text search in SQLite, built for work on prognostics and health management.</li>
+              <li>A paper aggregator that queries the OpenAlex, Semantic Scholar and arXiv services.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="part" id="ventures" aria-labelledby="ventures-h">
+      <h2 id="ventures-h">Ventures</h2>
+      <p class="lead">Arvorean is my main work. The other ventures are listed with their status as of October 2026; most are at an early stage.</p>
+
+      <ul class="rows">
+        <li class="row">
+          <div class="label"><span class="role">Founder and Director</span>Incorporated, 2026</div>
+          <div class="row-body">
+            <h3>Arvorean Robotics and Automation Pvt Ltd</h3>
+            <p>Rovers for heavy and dangerous manual work, described <a href="#arvorean">above</a>.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label"><span class="role">Founder</span>Not yet incorporated</div>
+          <div class="row-body">
+            <h3>Manifolding</h3>
+            <p>A company to help hardware start-ups take a working prototype to a certified product with realistic unit costs and a stable supply chain. The first product is planned as a low-cost, AI-assisted compliance tool for certifications such as those of the Bureau of Indian Standards (BIS), the CE mark and ISO standards, offered as guidance and not as a legal guarantee. Later it is to draw on a network of outside experts who are paid per certified project. I am looking for <span class="nowrap">co-founders</span> in product and engineering, sales, legal and compliance, and manufacturing and certification.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">Being set up</div>
+          <div class="row-body">
+            <h3>Unmai Research and Engineering Collective <span class="ta" lang="ta">உண்மை</span></h3>
+            <p>A reading group in Chennai, free to join, for people who work on robotics, machine learning, cyber-physical systems, the Internet of Things (IoT), embedded systems and industrial automation, run in partnership with Arvorean Robotics and Automation Pvt Ltd. Unmai is the Tamil word for truth.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label"><span class="role">Co-founder</span>Idea stage</div>
+          <div class="row-body">
+            <h3>Swappable batteries for long-haul electric trucks</h3>
+            <p>A rugged, modular battery for long-haul electric trucks, with the pack split into many smaller modules that can be hot-swapped. Not yet incorporated; two founders and an industry advisor.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">Planning</div>
+          <div class="row-body">
+            <h3>Branded tender-coconut carts, Chennai</h3>
+            <p>Consistently graded tender coconuts sold from branded carts at one price across the city, with products made from recycled husk during the monsoon, when sales slow. Planned as a limited liability partnership (LLP) run day to day by a hired operator, and the first of several small businesses I intend to build alongside Arvorean.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label"><span class="role">Applicant</span>Grant application</div>
+          <div class="row-body">
+            <h3>IoT communication and soil sensing</h3>
+            <p>A proposal to the Department of Science and Technology’s NIDHI-PRAYAS programme for IoT communication and soil-sensing hardware. The coconut venture’s supply chain is meant to be the first place it is used.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">Stepped away</div>
+          <div class="row-body">
+            <h3>EngineerChennai</h3>
+            <p>An online store for DIY electronics, aimed at engineering students in Chennai. I built the storefront (plain HTML, CSS and JavaScript, with a Supabase back end, Razorpay payments and Cloudflare Pages hosting) and its logos, then stepped away to concentrate on Arvorean.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="part" id="experience" aria-labelledby="experience-h">
+      <h2 id="experience-h">Experience</h2>
+      <ul class="rows">
+        <li class="row">
+          <div class="label">Previously</div>
+          <div class="row-body">
+            <h3>Lead, Robolab</h3>
+            <p class="org">SRM Institute of Science and Technology</p>
+            <p>Led the lab and worked on the first phase of its EEG and brain–computer interface project: collecting a synchronised electroencephalography (EEG) and video dataset with a non-invasive, dry-electrode headset, towards a dataset paper. A pilot set of recordings has been made.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">Previously</div>
+          <div class="row-body">
+            <h3>Research assistant, HAVI project</h3>
+            <p class="org">Schmidt Sciences; led by Prof.&nbsp;Jon Chun</p>
+            <p>Worked on a benchmark for optical character recognition (OCR) on historic newspaper archives: literature surveys, research into document-degradation libraries, and a decision-support report recommending methods.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">Student project</div>
+          <div class="row-body">
+            <h3>Hybrid plant model for Renault Nissan Technology &amp; Business Centre India</h3>
+            <p class="org">Industry–academia collaboration through SRM Institute of Science and Technology</p>
+            <p>One of three students who validated a proof-of-concept hybrid plant model. We delivered a report, presentations and trained models.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">2026</div>
+          <div class="row-body">
+            <h3>Lecture on Parzen–Rosenblatt kernel density estimation</h3>
+            <p>A two-hour lecture prepared for students with little prior background.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="part" id="education" aria-labelledby="education-h">
+      <h2 id="education-h">Education</h2>
+      <ul class="rows">
+        <li class="row">
+          <div class="label">Expected 2027</div>
+          <div class="row-body">
+            <h3>B.Tech, SRM Institute of Science and Technology (SRMIST)</h3>
+            <p>Department of Computational Intelligence, Kattankulathur, Chennai.</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="label">In progress</div>
+          <div class="row-body">
+            <h3>M.S. in Computer Science, University of Colorado Boulder</h3>
+            <p>Online programme, taken through Coursera.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="part" id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p class="lead">Where it is possible, I would rather meet in person than talk over chat tools.</p>
+      <!-- CONTACT LINKS: add or remove lines here -->
+      <ul class="contact-links">
+        <li><a href="mailto:ashwinsriramulu7@gmail.com">ashwinsriramulu7@gmail.com</a></li>
+        <li><a href="https://orcid.org/0009-0006-2905-5648">ORCID <span class="numbers">0009-0006-2905-5648</span></a></li>
+        <!-- <li><a href="https://github.com/YOUR-USERNAME">GitHub</a></li> -->
+        <!-- <li><a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a></li> -->
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    Ashwin Sriramulu, Chennai. Last revised October 2026.
+  </footer>
+
+</div>
+
+<script>
+  /* Turns the rotor in the drawing: three steps on load, one step per click.
+     Twelve degrees is one step of a three-phase machine with ten rotor poles. */
+  (function () {
+    var rotor = document.getElementById('rotor');
+    var button = document.getElementById('motor-button');
+    if (!rotor || !button || !window.requestAnimationFrame) return;
+    var STEP = 12, DURATION = 520, PAUSE = 140;
+    var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var angle = 0, target = 0, running = false;
+
+    function draw(a) { rotor.setAttribute('transform', 'rotate(' + a.toFixed(2) + ' 200 200)'); }
+    function ease(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function run() {
+      if (running || angle >= target) return;
+      running = true;
+      var from = angle, to = Math.min(target, from + STEP), start = null;
+      function frame(now) {
+        if (start === null) start = now;
+        var t = Math.min(1, (now - start) / DURATION);
+        angle = from + (to - from) * ease(t);
+        draw(angle);
+        if (t < 1) { requestAnimationFrame(frame); return; }
+        angle = to;
+        running = false;
+        setTimeout(run, PAUSE);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function advance(steps) {
+      target += STEP * steps;
+      if (reduce) { angle = target; draw(angle); return; }
+      run();
+    }
+
+    button.addEventListener('click', function () { advance(1); });
+    if (!reduce) setTimeout(function () { advance(3); }, 700);
+  })();
+</script>
+</body>
+</html>
