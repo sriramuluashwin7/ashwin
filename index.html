@@ -1,560 +1,1146 @@
 <!doctype html>
 <!--
-  Personal site of Ashwin Sriramulu. Single file, no build step.
-  To publish on GitHub Pages: put this file at the root of a repository named
+  Personal site of Ashwin Sriramulu. One self-contained file (the portrait is embedded).
+  Publish on GitHub Pages: put this file at the root of a public repository named
   <your-github-username>.github.io and push.
 
   Things to edit:
-    1. Contact links: search for "CONTACT LINKS" below. GitHub and LinkedIn are
-       commented out until you add your usernames.
-    2. HYDRA-MC link: it currently opens an IEEE Xplore search for the title.
-       Replace it with the DOI link once you have it (search for "DOI").
-    3. Venture statuses are dated "October 2026"; update them as things change.
+    1. Contact links: search for "CONTACT LINKS". GitHub and LinkedIn are commented out
+       until you add your usernames.
+    2. Venture statuses are dated October 2026; update them as things change.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ashwin Sriramulu</title>
-<meta name="description" content="Ashwin Sriramulu: founder of Arvorean Robotics and Automation, final-year B.Tech student at SRM Institute of Science and Technology, Chennai. Research, ventures and contact.">
+<meta name="description" content="Ashwin Sriramulu: founder of Arvorean Robotics and Automation, with research on modelling and control of physical systems. Chennai, India.">
 <meta property="og:title" content="Ashwin Sriramulu">
-<meta property="og:description" content="Founder of Arvorean Robotics and Automation. Research in machine learning and engineering. Chennai, India.">
+<meta property="og:description" content="Founder of Arvorean Robotics and Automation. Research on modelling and control of physical systems. Chennai, India.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#F3F5F4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F151B" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12.5' fill='none' stroke='%230E4470' stroke-width='4'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%230E4470'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0F2340">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2340'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='%23ffffff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@500&amp;text=%E0%AE%89%E0%AE%A3%E0%AF%8D%E0%AE%AE%E0%AF%88&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@500&amp;text=%E0%AE%89%E0%AE%A3%E0%AF%8D%E0%AE%AE%E0%AF%88&amp;display=swap">
 <style>
+  /* ---------- tokens ---------- */
   :root {
-    --paper: #F3F5F4;
-    --ink: #17212B;
-    --ink-soft: #4E5A66;
-    --rule: #C8D0D5;
-    --accent: #0E4470;
-    --accent-line: rgba(14, 68, 112, .42);
-    --hatch: rgba(23, 33, 43, .40);
-    --coil: #0E4470;
-    --measure: 36rem;
-    --label-col: 9rem;
+    --page: #F4F6F9;
+    --surface: #FFFFFF;
+    --ink: #0F1B2D;
+    --ink-2: #445266;
+    --ink-3: #647187;
+    --line: #DCE3EB;
+    --line-2: #C3CDD9;
+    --brand: #0E4470;
+    --navy: #0F2340;
+    --on-navy-2: #C9D6E8;
+    --on-navy-3: #9FB3CF;
+    /* Field colours, validated as a set (all pairs) for light and dark surfaces */
+    --f-motion: #2a78d6;
+    --f-energy: #eda100;
+    --f-learning: #e87ba4;
+    --f-agri: #008300;
+    --f-eco: #1baf7a;
+    --hatch: rgba(15, 27, 45, .38);
     color-scheme: light dark;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --paper: #0F151B;
-      --ink: #E2E7EB;
-      --ink-soft: #9AA7B2;
-      --rule: #2B3743;
-      --accent: #8EB9E0;
-      --accent-line: rgba(142, 185, 224, .45);
-      --hatch: rgba(226, 231, 235, .36);
-      --coil: #6FA3D6;
+      --page: #0B111B;
+      --surface: #131C2B;
+      --ink: #E7ECF2;
+      --ink-2: #AEB9C7;
+      --ink-3: #8D9AAB;
+      --line: #223045;
+      --line-2: #34465F;
+      --brand: #8EB9E0;
+      --navy: #0E1A2D;
+      --f-motion: #3987e5;
+      --f-energy: #c98500;
+      --f-learning: #b83669;
+      --f-agri: #1c7719;
+      --f-eco: #24a476;
+      --hatch: rgba(231, 236, 242, .34);
     }
   }
+  [data-field="motion"]   { --field: var(--f-motion); }
+  [data-field="energy"]   { --field: var(--f-energy); }
+  [data-field="learning"] { --field: var(--f-learning); }
+  [data-field="agri"]     { --field: var(--f-agri); }
+  [data-field="eco"]      { --field: var(--f-eco); }
 
+  /* ---------- base ---------- */
+  * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--paper);
+    background: var(--page);
     color: var(--ink);
-    font-family: "EB Garamond", Garamond, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-    font-size: 1.1875rem;
-    line-height: 1.55;
-    font-variant-numeric: oldstyle-nums proportional-nums;
-    font-kerning: normal;
-    text-rendering: optimizeLegibility;
+    font: 400 1rem/1.6 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  ::selection { background: var(--accent-line); }
+  h1, h2 { font-family: "EB Garamond", Garamond, Georgia, serif; font-weight: 600; letter-spacing: -.01em; margin: 0; }
+  h3 { margin: 0; }
+  p { margin: 0; }
+  a { color: var(--brand); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
+  @media (min-width: 48rem) { .wrap { padding: 0 2rem; } }
+  .ta { font-family: "Noto Sans Tamil", "Tamil Sangam MN", "Latha", sans-serif; font-weight: 500; }
 
-  a {
-    color: var(--accent);
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: var(--accent-line);
-    text-underline-offset: .17em;
-  }
-  a:hover { text-decoration-color: currentColor; }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  /* ---------- top bar ---------- */
+  .topbar { position: sticky; top: 0; z-index: 30; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.08); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 3.4rem; }
+  .brand { font-family: "EB Garamond", Garamond, Georgia, serif; font-weight: 600; font-size: 1.2rem; color: #fff; text-decoration: none; white-space: nowrap; }
+  .nav { display: flex; gap: 1.4rem; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { color: var(--on-navy-2); text-decoration: none; font-size: .9rem; font-weight: 500; white-space: nowrap; padding: .3rem 0; }
+  .nav a:hover { color: #fff; }
+  @media (max-width: 40rem) { .brand { display: none; } .topbar .wrap { min-height: 2.9rem; } .nav { gap: 1.15rem; } }
 
-  p { margin: 0 0 .85em; }
-  p:last-child { margin-bottom: 0; }
+  /* ---------- hero ---------- */
+  .hero { background: var(--navy); color: #fff; padding: 2.5rem 0 3.25rem; }
+  .hero .wrap { display: grid; gap: 1.75rem; align-items: center; text-align: center; }
+  .portrait {
+    order: -1; width: 12.5rem; height: 12.5rem; margin: 0 auto; border-radius: 50%; overflow: hidden;
+    box-shadow: 0 0 0 5px rgba(255,255,255,.92), 0 18px 44px rgba(0,0,0,.38);
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 3.75rem); line-height: 1.04; color: #fff; }
+  .role { margin-top: .55rem; font-size: 1.08rem; font-weight: 500; color: var(--on-navy-2); }
+  .place { margin-top: .1rem; font-size: .95rem; color: var(--on-navy-3); }
+  .statement { margin: 1.15rem auto 0; max-width: 35rem; font-size: 1.12rem; line-height: 1.55; color: #E6ECF4; }
+  .proofs { list-style: none; padding: 0; margin: 1.4rem 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .55rem 1.5rem; }
+  .proofs li { display: flex; align-items: center; gap: .5rem; font-size: .92rem; color: #E6ECF4; }
+  .proofs svg { width: 18px; height: 18px; flex: none; color: #8DB8E8; }
+  .proofs a { color: #fff; text-decoration-color: rgba(255,255,255,.45); }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; margin-top: 1.6rem; }
+  .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .62rem 1.1rem; border-radius: 7px; font-weight: 600; font-size: .92rem; text-decoration: none; }
+  .btn svg { width: 17px; height: 17px; }
+  .btn-primary { background: #fff; color: #0F2340; }
+  .btn-primary:hover { background: #E7EEF7; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,.38); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.08); }
+  @media (min-width: 56rem) {
+    .hero { padding: 4.75rem 0 5.25rem; }
+    .hero .wrap { grid-template-columns: minmax(0, 1fr) auto; gap: 4.5rem; text-align: left; }
+    .portrait { order: 0; width: 18.5rem; height: 18.5rem; margin: 0; }
+    .statement { margin-left: 0; }
+    .proofs, .actions { justify-content: flex-start; }
+  }
 
-  .page { max-width: 57rem; margin: 0 auto; padding: 0 1rem; }
-  @media (min-width: 48rem) { .page { padding: 0 2.5rem; } }
+  /* ---------- sections ---------- */
+  .band { padding: 3.25rem 0; scroll-margin-top: 3rem; }
+  .band.alt { background: var(--surface); }
+  @media (min-width: 48rem) { .band { padding: 4.5rem 0; scroll-margin-top: 3.4rem; } }
+  .sec-head { max-width: 46rem; margin-bottom: 1.75rem; }
+  .sec-head h2 { font-size: clamp(1.95rem, 3.6vw, 2.55rem); line-height: 1.1; }
+  .sec-head p { margin-top: .55rem; color: var(--ink-2); font-size: 1.05rem; }
+  .sec-head .motto { font-family: "EB Garamond", Garamond, Georgia, serif; font-style: italic; font-size: 1.6rem; line-height: 1.25; margin-top: .35rem; color: var(--ink); }
 
-  /* ---------- opening ---------- */
-  .hero {
-    display: grid;
-    grid-template-areas: "head" "fig" "body";
-    gap: 1.75rem;
-    padding: 3rem 0 3.25rem;
+  /* chips: a project reference, coloured by field, always labelled */
+  .chip {
+    display: inline-flex; align-items: center; gap: .45rem;
+    padding: .32rem .7rem .32rem .55rem; border: 1px solid var(--line-2); border-radius: 999px;
+    background: var(--surface); color: var(--ink); font-size: .86rem; font-weight: 500; line-height: 1.3;
+    text-decoration: none; transition: border-color .15s, box-shadow .15s, opacity .15s;
   }
-  .hero-head { grid-area: head; }
-  .hero-body { grid-area: body; }
-  h1 {
-    font-weight: 500;
-    font-size: clamp(2.5rem, 5.6vw, 3.55rem);
-    line-height: 1.05;
-    letter-spacing: -.01em;
-    margin: 0 0 .9rem;
+  .chip::before { content: ""; width: .62rem; height: .62rem; border-radius: 50%; background: var(--field); flex: none; }
+  .chip:hover, .chip.hi { border-color: var(--field); box-shadow: 0 0 0 3px color-mix(in srgb, var(--field) 22%, transparent); }
+
+  .legend { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-wrap: wrap; gap: .45rem 1.3rem; font-size: .86rem; color: var(--ink-2); }
+  .legend li { display: flex; align-items: center; gap: .45rem; }
+  .legend li::before { content: ""; width: .7rem; height: .7rem; border-radius: 50%; background: var(--field); }
+
+  /* ---------- work map ---------- */
+  .map { position: relative; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: visible; }
+  .map-r { display: grid; grid-template-columns: 11.75rem repeat(4, minmax(0, 1fr)); }
+  .map-head { font-size: .8rem; font-weight: 600; color: var(--ink-3); }
+  .map-head > div { padding: .7rem .9rem; display: flex; align-items: center; gap: .5rem; }
+  .map-head > div + div { border-left: 1px solid var(--line); }
+  .map-head .to::after { content: "\2192"; color: var(--ink-3); font-weight: 400; }
+  .map-row { border-top: 1px solid var(--line); }
+  .map-field {
+    display: flex; align-items: center; gap: .55rem; padding: .85rem .9rem;
+    font-weight: 600; font-size: .9rem; line-height: 1.3;
+    background: color-mix(in srgb, var(--field) 11%, var(--surface));
+    box-shadow: inset 4px 0 0 var(--field);
   }
-  .roles { list-style: none; margin: 0; padding: 0; color: var(--ink-soft); line-height: 1.4; }
-  .roles li + li { margin-top: .2rem; }
-  .intro { max-width: var(--measure); margin: 0 0 1.4rem; }
-  .toc ul {
-    list-style: none; margin: 0; padding: 0;
-    display: flex; flex-wrap: wrap; gap: .2rem 1.15rem;
+  .map-row:last-child .map-field { border-bottom-left-radius: 13px; }
+  .map-cell { padding: .75rem .9rem; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; border-left: 1px solid var(--line); }
+  .map-cell:empty::after { content: ""; width: 1.4rem; height: 1px; background: var(--line-2); margin: .85rem 0; }
+  .map-links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  .map-links .link { fill: none; stroke: var(--ink-3); stroke-width: 1.4; opacity: .8; transition: opacity .15s, stroke .15s; }
+  .map-links .arrowhead { fill: var(--ink-3); }
+  .map.is-hover .node:not(.hi) { opacity: .32; }
+  .map.is-hover .link:not(.hi) { opacity: .12; }
+  .map .link.hi { stroke: var(--ink); stroke-width: 1.9; opacity: 1; }
+  .map-note { margin-top: .8rem; font-size: .86rem; color: var(--ink-3); }
+  @media (max-width: 52rem) {
+    .map-r { display: block; }
+    .map-r.map-head { display: none; }
+    .map-row:nth-child(2) { border-top: 0; }
+    .map-row:nth-child(2) .map-field { border-top-left-radius: 13px; border-top-right-radius: 13px; }
+    .map-row:last-child .map-field { border-bottom-left-radius: 0; }
+    .map-cell { position: relative; flex-direction: row; flex-wrap: wrap; align-items: center; border-left: 0; padding: .45rem .9rem .45rem 5.6rem; }
+    .map-cell:empty { display: none; }
+    .map-cell::before { content: attr(data-stage); position: absolute; left: .9rem; top: .82rem; font-size: .75rem; font-weight: 600; color: var(--ink-3); }
+    .map-row .map-cell:last-child { padding-bottom: .9rem; }
+    .map-links, .map-note { display: none; }
   }
 
-  .motor { grid-area: fig; margin: 0; width: 100%; max-width: 19rem; justify-self: center; }
-  .motor-button {
-    display: block; width: 100%; padding: 0; margin: 0;
-    border: 0; background: none; color: inherit; font: inherit; cursor: pointer;
-    border-radius: 50%;
-    -webkit-tap-highlight-color: transparent;
+  .tip {
+    position: fixed; z-index: 40; max-width: 17rem; padding: .5rem .7rem; border-radius: 8px;
+    background: var(--ink); color: var(--surface); font-size: .8rem; line-height: 1.4; pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,.18);
   }
-  .motor-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  /* ---------- stage tracks ---------- */
+  .track { list-style: none; margin: 0 0 2.25rem; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 1rem; position: relative; }
+  .track::before { content: ""; position: absolute; left: .45rem; right: .6rem; top: .43rem; height: 2px; background: var(--line-2); }
+  .track::after { content: ""; position: absolute; right: 0; top: .1rem; border: .38rem solid transparent; border-left: .6rem solid var(--line-2); border-right: 0; }
+  .stage { position: relative; padding-top: 1.55rem; }
+  .stage::before { content: ""; position: absolute; top: 0; left: 0; width: .95rem; height: .95rem; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink-3); }
+  .stage.top::before { background: var(--brand); border-color: var(--brand); }
+  .stage-name { display: block; font-weight: 600; font-size: .88rem; margin-bottom: .6rem; }
+  .stage-items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+  .stage.aside { padding-left: 1rem; border-left: 1px solid var(--line); }
+  .stage.aside::before { left: 1rem; border-style: solid; border-color: var(--line-2); }
+  .stage.aside .stage-name { color: var(--ink-3); }
+  .track-title { font-size: .8rem; font-weight: 600; color: var(--ink-3); margin: 0 0 .9rem; }
+  @media (max-width: 52rem) {
+    .track { grid-template-columns: 1fr; gap: 0; }
+    .track::before { left: .43rem; right: auto; top: .5rem; bottom: .6rem; width: 2px; height: auto; }
+    .track::after { display: none; }
+    .stage { padding: 0 0 1.15rem 1.9rem; }
+    .stage::before { top: .2rem; }
+    .stage-items { flex-direction: row; flex-wrap: wrap; }
+    .stage.aside { border-left: 0; padding-left: 1.9rem; }
+    .stage.aside::before { left: 0; }
+  }
+
+  /* ---------- expandable items ---------- */
+  .list-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 0 0 .7rem; }
+  .list-head h3 { font-size: 1rem; font-weight: 600; }
+  .expand-all {
+    background: var(--surface); border: 1px solid var(--line-2); border-radius: 7px; padding: .32rem .75rem;
+    font: 500 .8rem "IBM Plex Sans", system-ui, sans-serif; color: var(--ink-2); cursor: pointer;
+  }
+  .expand-all:hover { border-color: var(--ink-3); color: var(--ink); }
+  .items { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: hidden; }
+  .item { position: relative; border-top: 1px solid var(--line); scroll-margin-top: 4.5rem; }
+  .item:first-child { border-top: 0; }
+  .item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--field, var(--line-2)); }
+  .item > summary, .item > .row {
+    list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    gap: .2rem 1rem; padding: .95rem 1.25rem .95rem 1.5rem; color: inherit; text-decoration: none;
+  }
+  .item > summary::-webkit-details-marker { display: none; }
+  .item > summary:hover, .item > .row:hover { background: color-mix(in srgb, var(--field, var(--line)) 6%, var(--surface)); }
+  .item-title { font-weight: 600; font-size: 1.02rem; line-height: 1.35; }
+  .item-line { grid-column: 1; color: var(--ink-2); font-size: .92rem; line-height: 1.45; }
+  .badge {
+    grid-column: 2; grid-row: 1; justify-self: end; align-self: start; margin-top: .1rem;
+    font-size: .74rem; font-weight: 500; color: var(--ink-2); white-space: nowrap;
+    border: 1px solid var(--line-2); border-radius: 999px; padding: .08rem .55rem;
+  }
+  .chev { grid-column: 2; grid-row: 2; justify-self: end; align-self: center; width: 1.1rem; height: 1.1rem; color: var(--ink-3); transition: transform .2s; }
+  .item[open] > summary .chev { transform: rotate(180deg); }
+  .item-body { padding: .1rem 1.25rem 1.3rem 1.5rem; }
+  .item-body ul { margin: .85rem 0 0; padding-left: 1.1rem; }
+  .item-body li { margin: .28rem 0; }
+  .item-body li::marker { color: var(--ink-3); }
+  .item-body .cite { font-size: .95rem; }
+  .item-body .cite i { font-style: italic; }
+  .more { display: inline-flex; align-items: center; gap: .35rem; margin-top: .9rem; font-weight: 600; font-size: .92rem; }
+  .flash { animation: flash 1.4s ease-out 1; }
+  @keyframes flash { from { box-shadow: inset 0 0 0 2px var(--field, var(--brand)); } to { box-shadow: inset 0 0 0 2px transparent; } }
+  @media (max-width: 30rem) {
+    .item > summary, .item > .row { grid-template-columns: minmax(0, 1fr) 1.1rem; }
+    .badge { grid-column: 1; grid-row: 2; justify-self: start; margin: .2rem 0 .15rem; }
+    .item-line { grid-row: 3; }
+    .chev { grid-row: 1; }
+  }
+
+  /* ---------- diagrams ---------- */
+  .flow { display: flex; align-items: stretch; gap: .45rem; margin-top: .9rem; }
+  .flow > .arrow { align-self: center; flex: none; color: var(--ink-3); font-size: 1.05rem; line-height: 1; }
+  .box {
+    flex: 1 1 0; min-width: 0; border: 1px solid var(--line-2); border-radius: 9px; padding: .62rem .75rem;
+    background: var(--page); font-size: .84rem; line-height: 1.4; color: var(--ink-2);
+  }
+  .box b { display: block; font-size: .88rem; font-weight: 600; color: var(--ink); }
+  .box.hl { border-color: var(--field); box-shadow: inset 3px 0 0 var(--field); background: color-mix(in srgb, var(--field) 8%, var(--page)); }
+  .stack { flex: 1 1 0; display: flex; flex-direction: column; gap: .45rem; }
+  .under { display: flex; gap: .45rem; margin-top: .45rem; }
+  .under .box { flex: 1 1 auto; }
+  .feed { margin-top: .45rem; font-size: .82rem; color: var(--ink-2); display: flex; align-items: center; gap: .4rem; }
+  .feed::before { content: "\2191"; color: var(--ink-3); font-size: 1rem; }
+  .inner { margin-top: .55rem; }
+  @media (max-width: 40rem) {
+    .flow { flex-direction: column; }
+    .flow > .arrow { transform: rotate(90deg); }
+    .under { flex-direction: column; }
+  }
+
+  .fig { margin: .9rem 0 0; }
+  .item-body .fig { max-width: 34rem; }
+  .fig svg { display: block; width: 100%; height: auto; }
+  .fig figcaption { margin-top: .45rem; font-size: .8rem; color: var(--ink-3); }
+  .svg-t { font: 500 12px "IBM Plex Sans", system-ui, sans-serif; fill: var(--ink-2); }
+  .svg-s { font: 400 11px "IBM Plex Sans", system-ui, sans-serif; fill: var(--ink-3); }
+  .svg-ink { stroke: var(--ink-2); fill: none; stroke-width: 1.5; }
+  .svg-faint { stroke: var(--line-2); fill: none; stroke-width: 1; }
+  .svg-panel { fill: var(--page); stroke: var(--line); }
+  .svg-field { fill: var(--field); }
+  .svg-box { fill: color-mix(in srgb, var(--field) 18%, var(--surface)); stroke: none; }
+  .svg-fieldline { stroke: var(--field); fill: none; stroke-width: 2; }
+
+  /* theory callout */
+  .theory {
+    display: grid; gap: 1.25rem; align-items: center; margin: 0 0 2.25rem; padding: 1.25rem 1.4rem;
+    border: 1px solid var(--line); border-radius: 14px; background: var(--surface);
+    box-shadow: inset 4px 0 0 var(--field); scroll-margin-top: 4.5rem;
+  }
+  .theory h3 { font-size: 1.02rem; font-weight: 600; }
+  .theory p { margin-top: .35rem; color: var(--ink-2); font-size: .95rem; }
+  .theory .fig { margin: 0; max-width: 24rem; }
+  @media (min-width: 52rem) { .theory { grid-template-columns: minmax(0, 1fr) minmax(0, 23rem); gap: 2rem; } }
+
+  /* Arvorean */
+  .facts { display: flex; flex-wrap: wrap; gap: .6rem 2.25rem; margin: 1.2rem 0 0; }
+  .facts div { display: flex; flex-direction: column; }
+  .facts dt { font-size: .76rem; font-weight: 600; color: var(--ink-3); }
+  .facts dd { margin: 0; font-weight: 500; }
+  .facts .num { font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+  .roadmap { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, max-content); column-gap: 2.1rem; row-gap: 2.4rem; margin: 1.9rem 0 2.25rem; }
+  .step { position: relative; border: 1px solid var(--line-2); border-radius: 10px; padding: .7rem .9rem; background: var(--surface); min-width: 9.5rem; }
+  .step .when { display: block; font-size: .74rem; font-weight: 600; color: var(--ink-3); }
+  .step b { display: block; font-size: .92rem; line-height: 1.3; margin-top: .1rem; }
+  .step.now { border-color: var(--f-motion); box-shadow: inset 0 3px 0 var(--f-motion); }
+  .step:nth-child(-n+3)::after { content: "\2192"; position: absolute; right: -1.55rem; top: 50%; transform: translateY(-50%); color: var(--ink-3); }
+  .step.motor { grid-column: 1; grid-row: 2; background: color-mix(in srgb, var(--f-motion) 8%, var(--surface)); }
+  .step.motor::before { content: "\2191"; position: absolute; left: 50%; top: -1.95rem; transform: translateX(-50%); color: var(--ink-3); font-size: 1.05rem; }
+  @media (max-width: 52rem) {
+    .roadmap { grid-template-columns: minmax(0, 22rem); row-gap: 1.7rem; }
+    .step { min-width: 0; }
+    .step:nth-child(-n+3)::after { content: "\2193"; right: auto; left: 1.2rem; top: auto; bottom: -1.55rem; transform: none; }
+    .step.motor { grid-row: auto; }
+    .step.motor::before { content: none; }
+  }
+
+  /* motor drawing */
+  .motor { margin: 1rem 0 0; max-width: 21rem; }
+  .motor-button { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; border-radius: 50%; -webkit-tap-highlight-color: transparent; }
   .motor svg { display: block; width: 100%; height: auto; overflow: visible; }
-  .motor figcaption {
-    margin-top: .8rem;
-    font-size: .85em;
-    font-style: italic;
-    line-height: 1.45;
-    color: var(--ink-soft);
-  }
   .motor .iron { stroke: var(--ink); stroke-width: 1.1; stroke-linejoin: round; fill-rule: evenodd; }
   .motor .rotor .iron { fill: url(#hatch-rotor); }
   .motor .stator .iron { fill: url(#hatch-stator); }
   .motor .hatch-line { stroke: var(--hatch); stroke-width: 1; }
-  .motor .coil { fill: var(--coil); }
-  .motor .centre { fill: none; stroke: var(--ink-soft); stroke-width: .8; stroke-dasharray: 16 3 2 3; }
-  .motor .leader { fill: none; stroke: var(--ink-soft); stroke-width: .8; }
-  .motor .leader-end { fill: var(--ink-soft); }
-  .motor .note { font-family: inherit; font-style: italic; font-size: 16.5px; fill: var(--ink-soft); }
+  .motor .coil { fill: var(--f-motion); }
+  .motor .centre { fill: none; stroke: var(--ink-3); stroke-width: .8; stroke-dasharray: 16 3 2 3; }
+  .motor .leader { fill: none; stroke: var(--ink-3); stroke-width: .8; }
+  .motor .leader-end { fill: var(--ink-3); }
+  .motor .note { font: 400 15px "IBM Plex Sans", system-ui, sans-serif; fill: var(--ink-2); }
+  .motor figcaption { margin-top: .55rem; font-size: .8rem; color: var(--ink-3); }
 
-  @media (min-width: 52rem) {
-    .hero {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
-      grid-template-rows: auto 1fr;
-      grid-template-areas: "head fig" "body fig";
-      column-gap: 3.5rem;
-      row-gap: 1.6rem;
-      padding: 5rem 0 4.25rem;
-    }
-    .motor { max-width: 20rem; align-self: center; }
-  }
+  /* contact & footer */
+  .contact-links { list-style: none; margin: 1.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .7rem; }
+  .contact-links a { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1rem; border: 1px solid var(--line-2); border-radius: 8px; background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 500; font-size: .92rem; }
+  .contact-links a:hover { border-color: var(--brand); color: var(--brand); }
+  .contact-links svg { width: 17px; height: 17px; color: var(--ink-3); }
+  footer { border-top: 1px solid var(--line); padding: 1.4rem 0 2.5rem; font-size: .84rem; color: var(--ink-3); }
 
-  /* ---------- sections ---------- */
-  section.part { border-top: 1px solid var(--rule); padding: 3rem 0 3.25rem; }
-  h2 {
-    font-weight: 500;
-    font-size: 1.75rem;
-    line-height: 1.2;
-    letter-spacing: -.005em;
-    margin: 0 0 1.1rem;
-  }
-  .lead { max-width: var(--measure); margin-bottom: 1.6rem; }
-  .motto {
-    font-style: italic;
-    font-size: 1.45rem;
-    line-height: 1.3;
-    margin: .2rem 0 .9rem;
-  }
-  .fine { font-size: .87em; color: var(--ink-soft); max-width: var(--measure); }
-
-  /* Rows: a narrow label column and a text column */
-  .rows { margin: 0; padding: 0; list-style: none; }
-  .row {
-    display: grid;
-    grid-template-columns: var(--label-col) minmax(0, var(--measure));
-    column-gap: 1.5rem;
-    padding: .95rem 0;
-  }
-  .row + .row { border-top: 0; }
-  .label {
-    font-size: .87em;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink-soft);
-    margin: 0;
-    padding-top: .18em;
-    line-height: 1.4;
-  }
-  .nowrap { white-space: nowrap; }
-  .label .role { display: block; font-style: normal; color: var(--ink); }
-  .row-body > * + * { margin-top: .45em; }
-  .entry + .entry { margin-top: 1.35rem; }
-
-  h3, h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 0 0 .3em;
-  }
-  .org { color: var(--ink-soft); margin: 0 0 .35em; }
-  .cite { font-weight: 400; }
-  .cite .title { font-style: italic; }
-  .ta { font-family: "Noto Serif Tamil", "Tamil Sangam MN", "Latha", serif; font-weight: 500; font-size: .92em; margin-left: .3em; color: var(--ink-soft); }
-
-  ul.plain { margin: 0; padding-left: 1.1em; }
-  ul.plain li + li { margin-top: .35em; }
-
-  .numbers { font-variant-numeric: lining-nums tabular-nums; letter-spacing: .01em; }
-
-  .contact-links { list-style: none; margin: 1rem 0 0; padding: 0; }
-  .contact-links li + li { margin-top: .3rem; }
-
-  footer { border-top: 1px solid var(--rule); padding: 1.5rem 0 3rem; font-size: .85em; color: var(--ink-soft); }
-
-  @media (max-width: 40rem) {
-    .row { grid-template-columns: minmax(0, 1fr); row-gap: .25rem; }
-    .label { padding-top: 0; }
-    .label .role { display: inline; }
-    .label .role::after { content: ","; margin-right: .3em; }
-    .rows .row { padding: .8rem 0; }
-  }
-
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
   @media print {
-    body { background: #fff; color: #000; font-size: 11pt; }
-    .toc, .hint { display: none; }
-    a { color: #000; text-decoration: none; }
-    section.part { break-inside: avoid-page; }
+    .topbar, .expand-all, .actions { display: none; }
+    .hero { background: #fff; color: #000; }
+    .hero h1, .role, .place, .statement, .proofs li, .proofs a { color: #000; }
+    .band { padding: 1.5rem 0; }
   }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <header class="hero">
-    <div class="hero-head">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Ashwin Sriramulu</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#map">Map</a>
+      <a href="#research">Research</a>
+      <a href="#arvorean">Arvorean</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
       <h1>Ashwin Sriramulu</h1>
-      <ul class="roles">
-        <li>Founder and Director, Arvorean Robotics and Automation</li>
-        <li>B.Tech, final year, SRM Institute of Science and Technology</li>
-        <li>Chennai, India</li>
+      <p class="role">Founder &amp; Director, Arvorean Robotics and Automation</p>
+      <p class="place">Chennai, India</p>
+      <p class="statement">I build rovers to take people out of dangerous manual work, research how to model and control physical systems, and develop early-stage ventures.</p>
+      <ul class="proofs">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><a href="https://ieeexplore.ieee.org/document/11737480">IEEE journal paper, 2026</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.6 2.5L16 9.5"/></svg>SAE WCX abstract accepted</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6M3 21h18"/></svg>Company incorporated, 2026</li>
       </ul>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:ashwinsriramulu7@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>Email</a>
+        <a class="btn btn-ghost" href="https://orcid.org/0009-0006-2905-5648">ORCID</a>
+      </div>
     </div>
-
-    <figure class="motor">
-      <button class="motor-button" id="motor-button" type="button" aria-label="Advance the rotor in the drawing by one step">
-        <svg viewBox="0 0 400 400" role="img" aria-labelledby="motor-title motor-desc">
-          <title id="motor-title">Cross-section of a 12/10 outer-rotor doubly-salient motor</title>
-          <desc id="motor-desc">Schematic drawing. An outer rotor with ten inward-facing poles surrounds a stationary stator with twelve outward-facing poles, with windings in the slots between the stator poles.</desc>
-          <defs>
-            <pattern id="hatch-rotor" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line class="hatch-line" x1="2.5" y1="0" x2="2.5" y2="5"/>
-            </pattern>
-            <pattern id="hatch-stator" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-              <line class="hatch-line" x1="2.5" y1="0" x2="2.5" y2="5"/>
-            </pattern>
-          </defs>
-
-          <g class="rotor" id="rotor">
-            <path class="iron" d="M350.0 200.0A150 150 0 1 1 50.0 200.0A150 150 0 1 1 350.0 200.0ZM184.7 72.9L184.7 91.1A110 110 0 0 1 215.3 91.1L215.3 72.9A128 128 0 0 1 262.3 88.2L251.6 102.9A110 110 0 0 1 276.4 120.9L287.1 106.2A128 128 0 0 1 316.1 146.2L298.9 151.8A110 110 0 0 1 308.3 180.9L325.6 175.3A128 128 0 0 1 325.6 224.7L308.3 219.1A110 110 0 0 1 298.9 248.2L316.1 253.8A128 128 0 0 1 287.1 293.8L276.4 279.1A110 110 0 0 1 251.6 297.1L262.3 311.8A128 128 0 0 1 215.3 327.1L215.3 308.9A110 110 0 0 1 184.7 308.9L184.7 327.1A128 128 0 0 1 137.7 311.8L148.4 297.1A110 110 0 0 1 123.6 279.1L112.9 293.8A128 128 0 0 1 83.9 253.8L101.1 248.2A110 110 0 0 1 91.7 219.1L74.4 224.7A128 128 0 0 1 74.4 175.3L91.7 180.9A110 110 0 0 1 101.1 151.8L83.9 146.2A128 128 0 0 1 112.9 106.2L123.6 120.9A110 110 0 0 1 148.4 102.9L137.7 88.2A128 128 0 0 1 184.7 72.9Z"/>
-          </g>
-
-          <g class="stator">
-            <path class="iron" d="M187.8 131.1L187.8 93.2A107.5 107.5 0 0 1 212.2 93.2L212.2 131.1A70 70 0 0 1 223.9 134.2L242.9 101.4A107.5 107.5 0 0 1 263.9 113.6L245.0 146.4A70 70 0 0 1 253.6 155.0L286.4 136.1A107.5 107.5 0 0 1 298.6 157.1L265.8 176.1A70 70 0 0 1 268.9 187.8L306.8 187.8A107.5 107.5 0 0 1 306.8 212.2L268.9 212.2A70 70 0 0 1 265.8 223.9L298.6 242.9A107.5 107.5 0 0 1 286.4 263.9L253.6 245.0A70 70 0 0 1 245.0 253.6L263.9 286.4A107.5 107.5 0 0 1 242.9 298.6L223.9 265.8A70 70 0 0 1 212.2 268.9L212.2 306.8A107.5 107.5 0 0 1 187.8 306.8L187.8 268.9A70 70 0 0 1 176.1 265.8L157.1 298.6A107.5 107.5 0 0 1 136.1 286.4L155.0 253.6A70 70 0 0 1 146.4 245.0L113.6 263.9A107.5 107.5 0 0 1 101.4 242.9L134.2 223.9A70 70 0 0 1 131.1 212.2L93.2 212.2A107.5 107.5 0 0 1 93.2 187.8L131.1 187.8A70 70 0 0 1 134.2 176.1L101.4 157.1A107.5 107.5 0 0 1 113.6 136.1L146.4 155.0A70 70 0 0 1 155.0 146.4L136.1 113.6A107.5 107.5 0 0 1 157.1 101.4L176.1 134.2A70 70 0 0 1 187.8 131.1ZM236.0 200.0A36 36 0 1 0 164.0 200.0A36 36 0 1 0 236.0 200.0Z"/>
-            <path class="coil" d="M213.6 127.3L213.6 97.4L225.7 99.7L218.1 128.2ZM186.4 127.3L186.4 97.4L174.3 99.7L181.9 128.2ZM248.1 143.8L263.1 117.9L272.4 126.0L251.5 146.9ZM224.6 130.2L239.6 104.4L227.8 100.3L220.2 128.8ZM269.8 175.4L295.6 160.4L299.7 172.2L271.2 179.8ZM256.2 151.9L282.1 136.9L274.0 127.6L253.1 148.5ZM272.7 213.6L302.6 213.6L300.3 225.7L271.8 218.1ZM272.7 186.4L302.6 186.4L300.3 174.3L271.8 181.9ZM256.2 248.1L282.1 263.1L274.0 272.4L253.1 251.5ZM269.8 224.6L295.6 239.6L299.7 227.8L271.2 220.2ZM224.6 269.8L239.6 295.6L227.8 299.7L220.2 271.2ZM248.1 256.2L263.1 282.1L272.4 274.0L251.5 253.1ZM186.4 272.7L186.4 302.6L174.3 300.3L181.9 271.8ZM213.6 272.7L213.6 302.6L225.7 300.3L218.1 271.8ZM151.9 256.2L136.9 282.1L127.6 274.0L148.5 253.1ZM175.4 269.8L160.4 295.6L172.2 299.7L179.8 271.2ZM130.2 224.6L104.4 239.6L100.3 227.8L128.8 220.2ZM143.8 248.1L117.9 263.1L126.0 272.4L146.9 251.5ZM127.3 186.4L97.4 186.4L99.7 174.3L128.2 181.9ZM127.3 213.6L97.4 213.6L99.7 225.7L128.2 218.1ZM143.8 151.9L117.9 136.9L126.0 127.6L146.9 148.5ZM130.2 175.4L104.4 160.4L100.3 172.2L128.8 179.8ZM175.4 130.2L160.4 104.4L172.2 100.3L179.8 128.8ZM151.9 143.8L136.9 117.9L127.6 126.0L148.5 146.9Z"/>
-          </g>
-
-          <path class="centre" d="M34 200H366M200 34V366"/>
-
-          <g aria-hidden="true">
-            <text class="note" x="12" y="24">outer rotor, 10 poles</text>
-            <path class="leader" d="M12 30H150L164.0 65.7"/>
-            <circle class="leader-end" cx="164.0" cy="65.7" r="2"/>
-
-            <text class="note" x="388" y="382" text-anchor="end">stator, 12 poles</text>
-            <path class="leader" d="M388 388H272L248.0 283.1"/>
-            <circle class="leader-end" cx="248.0" cy="283.1" r="2"/>
-
-            <text class="note" x="12" y="382">winding</text>
-            <path class="leader" d="M12 388H68L133.7 258.8"/>
-            <circle class="leader-end" cx="133.7" cy="258.8" r="2"/>
-          </g>
-        </svg>
-      </button>
-      <figcaption>
-        Schematic cross-section of a 12/10 outer-rotor doubly-salient motor, the topology of the switched reluctance motor I designed and validated in simulation. <span class="hint">Click or tap the drawing to advance the rotor by one step.</span>
-      </figcaption>
-    </figure>
-
-    <div class="hero-body">
-      <p class="intro">I founded Arvorean to build rovers that do heavy and dangerous manual work so that people do not have to. Alongside the company I do research in machine learning and engineering, on subjects that range from engine emissions and battery ageing to embedded control and speech recognition, and I am developing a few other ventures, most of them at an early stage. I am also enrolled in the online master’s programme in computer science at the University of Colorado Boulder.</p>
-      <nav class="toc" aria-label="Sections">
-        <ul>
-          <li><a href="#arvorean">Arvorean</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#ventures">Ventures</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="portrait">
+      <img src="data:image/jpeg;base64,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" width="640" height="640" alt="Portrait of Ashwin Sriramulu">
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
+<main>
 
-    <section class="part" id="arvorean" aria-labelledby="arvorean-h">
-      <h2 id="arvorean-h">Arvorean Robotics and Automation</h2>
-      <p class="fine">Founder and Director since 2026. A private limited company registered in Tamil Nadu, corporate identification number <span class="numbers">U62010TN2026PTC195993</span>.</p>
-      <p class="motto">Automation against exploitation.</p>
-      <p class="lead">The company exists to keep people away from backbreaking and dangerous manual labour, such as moving half a tonne of goods an hour by hand in a warehouse or factory. Warehouses and factories come first; mines and similar places may follow.</p>
+  <!-- ===================== MAP ===================== -->
+  <section class="band" id="map" aria-labelledby="map-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="map-h">How the work fits together</h2>
+        <p>Five fields, each running from theory towards ventures. Select a project to read more.</p>
+      </div>
 
-      <ul class="rows">
-        <li class="row">
-          <div class="label">First product</div>
-          <div class="row-body">
-            <h3>The rover</h3>
-            <p>A wheeled rover built from bought and fabricated parts, so that the main risk lies in integration rather than in new invention. The current build is designed for a 30&nbsp;kg payload, with an aluminium-extrusion chassis, four planetary gearmotors each with its own driver, a Raspberry Pi 4B for vision and a Raspberry Pi Pico&nbsp;2 for motor control; the vision pipeline is under development. A separate four-motor tank-drive version, controlled from a web page through an ESP32, is already built. The firmware is designed as a strictly layered stack around a 1&nbsp;kHz deterministic control loop, with a bridge to ROS&nbsp;2 (Robot Operating System&nbsp;2). The plan is to rent rovers out as a fleet and to sell the same hardware as a research platform.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label">Next</div>
-          <div class="row-body">
-            <h3>Laboratory kits</h3>
-            <p>A motor-control laboratory kit for university courses that follow the Anna University R2025 and SRM R2021 curricula. It is designed around a custom circular circuit board with an RP2350A microcontroller, a BTS7960B <span class="nowrap">H-bridge</span> driver and five motor modules, with motor speed estimated from an ADXL345 accelerometer by fast Fourier transform. An analogue characterisation kit and a 555-timer experimenter kit are planned to follow.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label">Longer term</div>
-          <div class="row-body">
-            <h3>A switched reluctance motor</h3>
-            <p>A motor of my own design: a DC-excited, doubly-salient, outer-rotor machine with 12 stator poles and 10 rotor poles, validated by finite-element simulation in FEMM. It is to be paired with its own controller and a fixed, calculated gear reduction, so that the motor runs near its most efficient speed. Once mature it is meant to drive Arvorean’s rovers, and it may also be offered to other builders of mobile robots as a propulsion module. The design is the subject of a planned conference paper; the drawing at the top of this page shows its topology in schematic form.</p>
-          </div>
-        </li>
+      <ul class="legend">
+        <li data-field="learning">Learning &amp; theory</li>
+        <li data-field="energy">Energy</li>
+        <li data-field="motion">Motion &amp; control</li>
+        <li data-field="agri">Agriculture &amp; food</li>
+        <li data-field="eco">Engineering ecosystem</li>
       </ul>
-    </section>
 
-    <section class="part" id="research" aria-labelledby="research-h">
-      <h2 id="research-h">Research</h2>
-      <p class="lead">My long-term interest is Koopman operator theory and Hilbert-space methods, and how they relate to the latent structure that neural networks learn. I have outlined a framework that connects regime-invariant feature learning with the construction of digital twins from first principles, drawing on Koopman operators, Volterra series and invariant causal prediction. My applied work, listed below, covers engine emissions, battery degradation, embedded control, classifier generalisation and speech recognition.</p>
+      <div class="map" id="work-map">
+        <div class="map-r map-head" aria-hidden="true">
+          <div>Field</div><div class="to">Theory</div><div class="to">Models</div><div class="to">Systems</div><div>Ventures</div>
+        </div>
 
-      <div class="rows">
-        <section class="row" aria-labelledby="g-published">
-          <h3 class="label" id="g-published">Journal paper</h3>
-          <div class="row-body">
-            <div class="entry">
-              <h4 class="cite">Ashwin Sriramulu and Jayakanth JJ, “<span class="title">Hybrid Dynamic Reconfigurable Architecture for Multi-Controller Autonomous Systems</span>” (HYDRA-MC), <em>IEEE Journal of the Electron Devices Society</em>, special issue. Early Access, 2026; final issue expected in 2027.</h4>
-              <p>First and corresponding author. The work included embedded firmware for Arduino Uno and Raspberry Pi Pico&nbsp;2 boards, Python simulation, and training of a temporal convolutional network.</p>
-              <!-- DOI: replace this search link with https://doi.org/<your DOI> once you have it -->
-              <p><a href="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&amp;queryText=%22Hybrid%20Dynamic%20Reconfigurable%20Architecture%20for%20Multi-Controller%20Autonomous%20Systems%22">Find it on IEEE Xplore</a></p>
-            </div>
+        <div class="map-r map-row" data-field="learning">
+          <div class="map-field">Learning &amp; theory</div>
+          <div class="map-cell" data-stage="Theory"><a class="chip node" data-field="learning" data-node="koopman" href="#r-theory" data-tip="Long-term interest: Koopman operators, Hilbert-space methods and digital twins.">Koopman &amp; digital twins</a></div>
+          <div class="map-cell" data-stage="Models"><a class="chip node" data-field="learning" data-node="dbfc" href="#r-dbfc" data-tip="Manuscript drafted: decision-boundary complexity as a predictor of the generalisation gap.">DBFC</a><a class="chip node" data-field="learning" data-node="pros" href="#r-pros" data-tip="Manuscript drafted: a prosodic adapter for speech recognition.">ProsGuide</a></div>
+          <div class="map-cell" data-stage="Systems"></div>
+          <div class="map-cell" data-stage="Ventures"></div>
+        </div>
+
+        <div class="map-r map-row" data-field="energy">
+          <div class="map-field">Energy</div>
+          <div class="map-cell" data-stage="Theory"></div>
+          <div class="map-cell" data-stage="Models"><a class="chip node" data-field="energy" data-node="thermo" href="#r-thermo" data-tip="Manuscript drafted: engine NOx prediction with a Koopman-style linearised latent space.">ThermoStateNet</a><a class="chip node" data-field="energy" data-node="battery" href="#r-battery" data-tip="Abstract accepted at SAE WCX.">Battery digital twin</a></div>
+          <div class="map-cell" data-stage="Systems"><a class="chip node" data-field="energy" data-node="ev" href="#r-ev" data-tip="Early stage: charging coordination without a central server.">EV charging</a></div>
+          <div class="map-cell" data-stage="Ventures"><a class="chip node" data-field="energy" data-node="truck" href="#v-truck" data-tip="Idea stage: hot-swappable batteries for long-haul electric trucks.">Truck batteries</a></div>
+        </div>
+
+        <div class="map-r map-row" data-field="motion">
+          <div class="map-field">Motion &amp; control</div>
+          <div class="map-cell" data-stage="Theory"></div>
+          <div class="map-cell" data-stage="Models"></div>
+          <div class="map-cell" data-stage="Systems"><a class="chip node" data-field="motion" data-node="hydra" href="#r-hydra" data-tip="Journal paper: IEEE J-EDS, Early Access 2026.">HYDRA-MC</a><a class="chip node" data-field="motion" data-node="srm" href="#a-motor" data-tip="Design validated in simulation; meant to drive the rovers.">Reluctance motor</a><a class="chip node" data-field="motion" data-node="rover" href="#a-rover" data-tip="Arvorean’s first product.">Rover</a><a class="chip node" data-field="motion" data-node="kits" href="#a-kits" data-tip="Arvorean’s next products: laboratory kits.">Lab kits</a></div>
+          <div class="map-cell" data-stage="Ventures"><a class="chip node" data-field="motion" data-node="arvorean" href="#arvorean" data-tip="Incorporated 2026. Founder &amp; Director.">Arvorean</a></div>
+        </div>
+
+        <div class="map-r map-row" data-field="agri">
+          <div class="map-field">Agriculture &amp; food</div>
+          <div class="map-cell" data-stage="Theory"></div>
+          <div class="map-cell" data-stage="Models"></div>
+          <div class="map-cell" data-stage="Systems"><a class="chip node" data-field="agri" data-node="soil" href="#v-soil" data-tip="Grant application: NIDHI-PRAYAS.">Soil sensing</a></div>
+          <div class="map-cell" data-stage="Ventures"><a class="chip node" data-field="agri" data-node="coconut" href="#v-coconut" data-tip="Planning: branded tender-coconut carts.">Coconut carts</a></div>
+        </div>
+
+        <div class="map-r map-row" data-field="eco">
+          <div class="map-field">Engineering ecosystem</div>
+          <div class="map-cell" data-stage="Theory"></div>
+          <div class="map-cell" data-stage="Models"></div>
+          <div class="map-cell" data-stage="Systems"></div>
+          <div class="map-cell" data-stage="Ventures"><a class="chip node" data-field="eco" data-node="manifolding" href="#v-manifolding" data-tip="Concept: prototype to certified product for hardware start-ups; recruiting co-founders.">Manifolding</a><a class="chip node" data-field="eco" data-node="unmai" href="#v-unmai" data-tip="Being set up, in partnership with Arvorean.">Unmai</a><a class="chip node" data-field="eco" data-node="engineerchennai" href="#v-engineerchennai" data-tip="Stepped away.">EngineerChennai</a></div>
+        </div>
+
+        <svg class="map-links" aria-hidden="true"></svg>
+      </div>
+      <p class="map-note">Lines mark direct links, such as the motor meant to drive the rover.</p>
+    </div>
+  </section>
+
+  <!-- ===================== RESEARCH ===================== -->
+  <section class="band alt" id="research" aria-labelledby="research-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="research-h">Research</h2>
+        <p>Modelling and control of physical systems, and the learning methods behind them.</p>
+      </div>
+
+      <h3 class="track-title">By publication status</h3>
+      <ol class="track" style="--n:4">
+        <li class="stage"><span class="stage-name">Early stage</span>
+          <ul class="stage-items">
+            <li><a class="chip" data-field="energy" href="#r-ev">EV charging</a></li>
+            <li><a class="chip" data-field="motion" href="#a-motor">Reluctance motor paper</a></li>
+          </ul></li>
+        <li class="stage"><span class="stage-name">Manuscript drafted</span>
+          <ul class="stage-items">
+            <li><a class="chip" data-field="energy" href="#r-thermo">ThermoStateNet</a></li>
+            <li><a class="chip" data-field="learning" href="#r-dbfc">DBFC</a></li>
+            <li><a class="chip" data-field="learning" href="#r-pros">ProsGuide</a></li>
+          </ul></li>
+        <li class="stage"><span class="stage-name">Abstract accepted</span>
+          <ul class="stage-items">
+            <li><a class="chip" data-field="energy" href="#r-battery">Battery digital twin</a></li>
+          </ul></li>
+        <li class="stage top"><span class="stage-name">Journal paper</span>
+          <ul class="stage-items">
+            <li><a class="chip" data-field="motion" href="#r-hydra">HYDRA-MC</a></li>
+          </ul></li>
+      </ol>
+
+      <div class="theory" id="r-theory" data-field="learning">
+        <div>
+          <h3>Long-term interest: Koopman operators and digital twins</h3>
+          <p>Koopman operator theory and Hilbert-space methods, and how they relate to the latent structure that neural networks learn. I have outlined a framework that links regime-invariant feature learning with building digital twins from first principles, drawing on Koopman operators, Volterra series and invariant causal prediction.</p>
+        </div>
+        <figure class="fig">
+          <svg viewBox="0 0 400 150" role="img" aria-label="Illustration: a curved trajectory in state space becomes a straight, evenly stepped trajectory after lifting into a space of observables.">
+            <rect class="svg-panel" x="6" y="24" width="160" height="104" rx="8"/>
+            <rect class="svg-panel" x="234" y="24" width="160" height="104" rx="8"/>
+            <text class="svg-t" x="86" y="16" text-anchor="middle">Nonlinear dynamics</text>
+            <text class="svg-t" x="314" y="16" text-anchor="middle">Linear after lifting</text>
+            <path class="svg-ink" d="M34 108 C18 66 70 38 112 52 S150 104 112 108 S80 84 98 74"/>
+            <g class="svg-field"><circle cx="34" cy="108" r="4"/><circle cx="36" cy="64" r="4"/><circle cx="112" cy="52" r="4"/><circle cx="135" cy="100" r="4"/><circle cx="98" cy="74" r="4"/></g>
+            <path class="svg-ink" d="M176 76 H220"/><path d="M220 71 L229 76 L220 81 Z" fill="var(--ink-2)"/>
+            <text class="svg-s" x="200" y="68" text-anchor="middle">lift</text>
+            <path class="svg-ink" d="M256 112 L364 44"/><path d="M362 38 L372 39 L367 48 Z" fill="var(--ink-2)"/>
+            <g class="svg-field"><circle cx="256" cy="112" r="4"/><circle cx="283" cy="95" r="4"/><circle cx="310" cy="78" r="4"/><circle cx="337" cy="61" r="4"/></g>
+            <text class="svg-s" x="298" y="66" text-anchor="middle">operator K</text>
+            <text class="svg-s" x="86" y="144" text-anchor="middle">state x</text>
+            <text class="svg-s" x="314" y="144" text-anchor="middle">observables g(x)</text>
+          </svg>
+          <figcaption>Illustration of the idea behind Koopman methods.</figcaption>
+        </figure>
+      </div>
+
+      <div class="list-head">
+        <h3>Papers and projects</h3>
+        <button class="expand-all" type="button" data-scope="research-items" aria-expanded="false">Expand all</button>
+      </div>
+      <div class="items" id="research-items">
+
+        <details class="item" id="r-hydra" data-field="motion">
+          <summary>
+            <span class="item-title">HYDRA-MC</span>
+            <span class="badge">Journal paper</span>
+            <span class="item-line">Hybrid dynamic reconfigurable architecture for multi-controller autonomous systems. IEEE J-EDS, 2026.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <p class="cite">Ashwin Sriramulu and Jayakanth JJ, “Hybrid Dynamic Reconfigurable Architecture for Multi-Controller Autonomous Systems”, <i>IEEE Journal of the Electron Devices Society</i>, special issue. Early Access 2026; final issue expected 2027.</p>
+            <ul>
+              <li>First and corresponding author.</li>
+              <li>Embedded firmware for Arduino Uno and Raspberry Pi Pico 2 boards, Python simulation, and a temporal convolutional network.</li>
+            </ul>
+            <a class="more" href="https://ieeexplore.ieee.org/document/11737480">Read on IEEE Xplore</a>
           </div>
-        </section>
+        </details>
 
-        <section class="row" aria-labelledby="g-abstract">
-          <h3 class="label" id="g-abstract">Abstract accepted</h3>
-          <div class="row-body">
-            <div class="entry">
-              <h4>Hybrid digital twin of lithium-ion battery packs</h4>
-              <p>Accepted as an abstract at SAE WCX (SAE International’s World Congress Experience); work in progress. The paper proposes a digital twin that couples physics simulation in MATLAB Simscape Battery Builder with recurrent neural networks (long short-term memory and gated recurrent unit networks, LSTM and GRU) to estimate capacity fade, resistance growth, state of health and remaining useful life, and that uses observed patterns of degradation to suggest second-life uses for retired electric-vehicle (EV) packs. The simulated dataset is planned for open release.</p>
+        <details class="item" id="r-battery" data-field="energy">
+          <summary>
+            <span class="item-title">Battery digital twin</span>
+            <span class="badge">Abstract accepted</span>
+            <span class="item-line">Physics simulation plus sequence models to estimate how lithium-ion packs age, and to suggest second-life uses.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <div class="flow">
+              <div class="stack">
+                <div class="box"><b>Physics simulation</b>MATLAB Simscape Battery Builder</div>
+                <div class="box"><b>Sequence models</b>LSTM and GRU recurrent networks</div>
+              </div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box hl"><b>Estimates</b>Capacity fade, resistance growth, state of health, remaining useful life</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box"><b>Second-life guidance</b>For retired electric-vehicle packs</div>
             </div>
+            <ul>
+              <li>Abstract accepted at SAE WCX (SAE International’s World Congress Experience); work in progress.</li>
+              <li>The simulated dataset is planned for open release.</li>
+            </ul>
           </div>
-        </section>
+        </details>
 
-        <section class="row" aria-labelledby="g-prep">
-          <h3 class="label" id="g-prep">In preparation</h3>
-          <div class="row-body">
-            <div class="entry">
-              <h4>ThermoStateNet</h4>
-              <p>A GRU-based framework for predicting nitrogen oxide (NOx) emissions from engines, in which the latent space is linearised along the lines of Koopman operator theory. It is evaluated on two engine datasets, with NASA’s C-MAPSS turbofan data as a cross-domain test, and its PyTorch code base is complete.</p>
-            </div>
-            <div class="entry">
-              <h4>Decision boundary fractal complexity</h4>
-              <p>A measure proposed as a classifier-agnostic predictor of the generalisation gap on tabular data: the box-counting dimension of the 1-nearest-neighbour decision boundary, measured after projecting the features with principal component analysis. A complete draft exists.</p>
-            </div>
-            <div class="entry">
-              <h4>ProsGuide</h4>
-              <p>A parameter-efficient adapter for speech recognition that feeds four simple prosodic features (fundamental frequency, energy, the change in energy, and zero-crossing rate) into a frozen Whisper-small encoder through cross-attention. First experiments on LibriSpeech are complete and a manuscript draft exists; a study of where in the encoder the adapter is best placed is planned.</p>
-            </div>
+        <details class="item" id="r-thermo" data-field="energy">
+          <summary>
+            <span class="item-title">ThermoStateNet</span>
+            <span class="badge">Manuscript drafted</span>
+            <span class="item-line">GRU-based prediction of engine NOx emissions, with a latent space linearised along Koopman lines.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
+              <li>Predicts nitrogen oxide (NOx) emissions from engines.</li>
+              <li>Evaluated on two datasets, with NASA’s C-MAPSS turbofan data as a cross-domain test.</li>
+              <li>PyTorch code base complete.</li>
+            </ul>
           </div>
-        </section>
+        </details>
 
-        <section class="row" aria-labelledby="g-current">
-          <h3 class="label" id="g-current">Current</h3>
-          <div class="row-body">
-            <div class="entry">
-              <h4>Decentralised coordination of EV charging</h4>
-              <p>With a small team I am working towards a method for coordinating electric-vehicle charging without a central server, using pseudonymous messages exchanged between vehicles. The single objective is that no station is overcrowded while others stand empty. The reason for leaving out the server is privacy: a central server would let one company follow individual drivers’ routes over time. Early stage.</p>
-            </div>
+        <details class="item" id="r-dbfc" data-field="learning">
+          <summary>
+            <span class="item-title">Decision boundary fractal complexity (DBFC)</span>
+            <span class="badge">Manuscript drafted</span>
+            <span class="item-line">How irregular a decision boundary is, as a classifier-agnostic predictor of the generalisation gap.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <figure class="fig">
+              <svg viewBox="0 0 400 168" role="img" aria-label="Illustration of box counting: a smooth boundary between two classes is covered by fewer boxes than an irregular one.">
+                <rect class="svg-panel" x="10" y="14" width="180" height="120" rx="6"/>
+                <rect class="svg-panel" x="210" y="14" width="180" height="120" rx="6"/>
+                <g class="svg-box"><rect x="10" y="86" width="12" height="12"/><rect x="22" y="86" width="12" height="12"/><rect x="34" y="86" width="12" height="12"/><rect x="34" y="98" width="12" height="12"/><rect x="46" y="98" width="12" height="12"/><rect x="58" y="98" width="12" height="12"/><rect x="70" y="98" width="12" height="12"/><rect x="82" y="98" width="12" height="12"/><rect x="94" y="86" width="12" height="12"/><rect x="94" y="98" width="12" height="12"/><rect x="106" y="86" width="12" height="12"/><rect x="118" y="74" width="12" height="12"/><rect x="118" y="86" width="12" height="12"/><rect x="130" y="74" width="12" height="12"/><rect x="142" y="62" width="12" height="12"/><rect x="142" y="74" width="12" height="12"/><rect x="154" y="62" width="12" height="12"/><rect x="166" y="50" width="12" height="12"/><rect x="166" y="62" width="12" height="12"/><rect x="178" y="50" width="12" height="12"/></g>
+                <g class="svg-box"><rect x="210" y="74" width="12" height="12"/><rect x="210" y="86" width="12" height="12"/><rect x="222" y="86" width="12" height="12"/><rect x="222" y="98" width="12" height="12"/><rect x="234" y="74" width="12" height="12"/><rect x="234" y="86" width="12" height="12"/><rect x="234" y="98" width="12" height="12"/><rect x="246" y="74" width="12" height="12"/><rect x="246" y="86" width="12" height="12"/><rect x="258" y="86" width="12" height="12"/><rect x="270" y="86" width="12" height="12"/><rect x="270" y="98" width="12" height="12"/><rect x="282" y="86" width="12" height="12"/><rect x="282" y="98" width="12" height="12"/><rect x="294" y="74" width="12" height="12"/><rect x="294" y="86" width="12" height="12"/><rect x="306" y="62" width="12" height="12"/><rect x="306" y="74" width="12" height="12"/><rect x="318" y="62" width="12" height="12"/><rect x="318" y="74" width="12" height="12"/><rect x="318" y="86" width="12" height="12"/><rect x="330" y="74" width="12" height="12"/><rect x="330" y="86" width="12" height="12"/><rect x="342" y="62" width="12" height="12"/><rect x="342" y="74" width="12" height="12"/><rect x="354" y="50" width="12" height="12"/><rect x="354" y="62" width="12" height="12"/><rect x="366" y="50" width="12" height="12"/><rect x="378" y="50" width="12" height="12"/><rect x="378" y="62" width="12" height="12"/></g>
+                <path class="svg-ink" d="M10 86.1 L20 90.7 L30 94.7 L40 97.9 L50 100.3 L60 101.6 L70 102 L80 101.3 L90 99.6 L100 96.9 L110 93.4 L120 89.2 L130 84.5 L140 79.4 L150 74.2 L160 69.1 L170 64.2 L180 59.8 L190 56.1"/>
+                <path class="svg-ink" d="M210 84.4 L212 88.4 L214 90.6 L216 91 L218 90.3 L220 89.2 L222 88.6 L224 89.1 L226 90.8 L228 93.3 L230 95.9 L232 97.8 L234 98 L236 96.3 L238 92.7 L240 87.9 L242 82.8 L244 78.4 L246 75.7 L248 75.1 L250 76.5 L252 79.3 L254 82.8 L256 86 L258 88.1 L260 88.8 L262 88.5 L264 87.6 L266 87 L268 87.4 L270 89.5 L272 93 L274 97.6 L276 102.4 L278 106.3 L280 108.4 L282 108.2 L284 105.8 L286 101.7 L288 96.8 L290 92.2 L292 88.6 L294 86.6 L296 86 L298 86.3 L300 86.7 L302 86.5 L304 85.1 L306 82.3 L308 78.5 L310 74.5 L312 71.2 L314 69.5 L316 69.9 L318 72.5 L320 76.6 L322 81.5 L324 85.9 L326 89.2 L328 90.5 L330 90 L332 88.1 L334 85.5 L336 83.2 L338 81.9 L340 81.7 L342 82.6 L344 83.8 L346 84.6 L348 84.1 L350 81.7 L352 77.5 L354 71.7 L356 65.4 L358 59.6 L360 55.2 L362 52.8 L364 52.7 L366 54.3 L368 56.8 L370 59.3 L372 61 L374 61.5 L376 60.7 L378 59.2 L380 57.8 L382 57.2 L384 58.1 L386 60.7 L388 64.5 L390 68.8"/>
+                <g class="svg-field"><circle cx="71.1" cy="37.7" r="3.2"/><circle cx="124.8" cy="29.5" r="3.2"/><circle cx="105.9" cy="60" r="3.2"/><circle cx="27.5" cy="74.8" r="3.2"/><circle cx="24.1" cy="67.1" r="3.2"/><circle cx="29.5" cy="31.4" r="3.2"/><circle cx="38.3" cy="45.2" r="3.2"/><circle cx="112.6" cy="63.3" r="3.2"/><circle cx="178.1" cy="26.8" r="3.2"/><circle cx="158.8" cy="52.1" r="3.2"/><circle cx="41.7" cy="34.3" r="3.2"/><circle cx="282.4" cy="63.5" r="3.2"/><circle cx="228.2" cy="29" r="3.2"/><circle cx="252.2" cy="38.9" r="3.2"/><circle cx="273.8" cy="27.5" r="3.2"/><circle cx="218" cy="37.7" r="3.2"/><circle cx="234.6" cy="59.8" r="3.2"/><circle cx="318.7" cy="37.4" r="3.2"/><circle cx="259.4" cy="58.1" r="3.2"/><circle cx="277.7" cy="34.8" r="3.2"/><circle cx="294.4" cy="72.3" r="3.2"/></g>
+                <g fill="var(--ink-2)"><rect x="117.9" y="117.6" width="6" height="6"/><rect x="145.3" y="91.7" width="6" height="6"/><rect x="101.1" y="110" width="6" height="6"/><rect x="152.8" y="117.2" width="6" height="6"/><rect x="79.1" y="109.6" width="6" height="6"/><rect x="149.4" y="108.9" width="6" height="6"/><rect x="73.8" y="111" width="6" height="6"/><rect x="171.3" y="90.8" width="6" height="6"/><rect x="162.5" y="100.1" width="6" height="6"/><rect x="358.4" y="102" width="6" height="6"/><rect x="219.2" y="109.9" width="6" height="6"/><rect x="354.2" y="122.3" width="6" height="6"/><rect x="218.8" y="117.9" width="6" height="6"/><rect x="301.6" y="120.8" width="6" height="6"/><rect x="242.4" y="99.3" width="6" height="6"/><rect x="302.3" y="100" width="6" height="6"/><rect x="348.1" y="121.4" width="6" height="6"/><rect x="349.2" y="95.9" width="6" height="6"/></g>
+                <text class="svg-t" x="100" y="152" text-anchor="middle">Smooth boundary, fewer boxes</text>
+                <text class="svg-t" x="300" y="152" text-anchor="middle">Irregular boundary, more boxes</text>
+              </svg>
+              <figcaption>Illustration of box counting, the idea behind the measure.</figcaption>
+            </figure>
+            <ul>
+              <li>Box-counting dimension of the 1-nearest-neighbour decision boundary, measured in a principal-component projection of tabular data.</li>
+              <li>A complete draft exists.</li>
+            </ul>
           </div>
-        </section>
+        </details>
 
-        <section class="row" aria-labelledby="g-earlier">
-          <h3 class="label" id="g-earlier">Earlier</h3>
-          <div class="row-body">
-            <ul class="plain">
+        <details class="item" id="r-pros" data-field="learning">
+          <summary>
+            <span class="item-title">ProsGuide</span>
+            <span class="badge">Manuscript drafted</span>
+            <span class="item-line">A prosodic cross-attention adapter for a frozen Whisper-small speech encoder.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <div class="flow">
+              <div class="box"><b>Speech</b>Audio input</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box" style="flex-grow:2"><b>Whisper-small encoder</b>Frozen
+                <div class="box hl inner"><b>Cross-attention adapter</b>Trained</div>
+              </div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box"><b>Output layer</b>Connectionist temporal classification (CTC), trained</div>
+            </div>
+            <p class="feed">Into the adapter: pitch (fundamental frequency), energy, change in energy, zero-crossing rate</p>
+            <ul>
+              <li>First experiments on LibriSpeech are complete and a manuscript is drafted.</li>
+              <li>A study of where in the encoder to place the adapter is noted as future work.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="item" id="r-ev" data-field="energy">
+          <summary>
+            <span class="item-title">Decentralised EV charging</span>
+            <span class="badge">Early stage</span>
+            <span class="item-line">Coordinating electric-vehicle charging without a central server, to keep drivers’ routes private.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <figure class="fig">
+              <svg viewBox="0 0 400 170" role="img" aria-label="Comparison: on the left, every vehicle reports to one central server; on the right, vehicles exchange messages directly with one another.">
+                <rect class="svg-panel" x="6" y="24" width="184" height="118" rx="8"/>
+                <rect class="svg-panel" x="210" y="24" width="184" height="118" rx="8"/>
+                <text class="svg-t" x="98" y="16" text-anchor="middle">Central server</text>
+                <text class="svg-t" x="302" y="16" text-anchor="middle">Vehicle to vehicle</text>
+                <g class="svg-faint" style="stroke-width:1.3"><path d="M98 64 L30 112 M98 64 L72 128 M98 64 L124 128 M98 64 L166 112"/></g>
+                <rect x="80" y="40" width="36" height="24" rx="4" fill="var(--surface)" stroke="var(--ink-2)" stroke-width="1.5"/>
+                <path d="M86 48 H110 M86 56 H110" stroke="var(--ink-3)" stroke-width="1.2"/>
+                <g class="svg-field"><circle cx="30" cy="112" r="7"/><circle cx="72" cy="128" r="7"/><circle cx="124" cy="128" r="7"/><circle cx="166" cy="112" r="7"/></g>
+                <g class="svg-faint" style="stroke-width:1.3"><path d="M236 58 L296 46 L368 64 M236 58 L262 116 L330 126 L368 64 M296 46 L262 116 M296 46 L330 126"/></g>
+                <rect x="290" y="80" width="14" height="14" rx="2" fill="var(--surface)" stroke="var(--ink-2)" stroke-width="1.4"/>
+                <rect x="352" y="100" width="14" height="14" rx="2" fill="var(--surface)" stroke="var(--ink-2)" stroke-width="1.4"/>
+                <g class="svg-field"><circle cx="236" cy="58" r="7"/><circle cx="296" cy="46" r="7"/><circle cx="368" cy="64" r="7"/><circle cx="262" cy="116" r="7"/><circle cx="330" cy="126" r="7"/></g>
+                <text class="svg-s" x="98" y="162" text-anchor="middle">One operator sees every route</text>
+                <text class="svg-s" x="302" y="162" text-anchor="middle">No central record of routes</text>
+              </svg>
+              <figcaption>Illustration of the idea. Dots are vehicles; squares are charging stations.</figcaption>
+            </figure>
+            <ul>
+              <li>Single objective: no station overcrowded while others stand empty.</li>
+              <li>Working with a small team; early stage.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="item" id="r-earlier">
+          <summary>
+            <span class="item-title">Earlier work and tools</span>
+            <span class="badge">Earlier</span>
+            <span class="item-line">Fault diagnosis, radar imagery, research-assistant work on historic newspapers, and literature tools.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
               <li>Bearing fault diagnosis using contrastive learning under class imbalance.</li>
               <li>Oil-spill detection in synthetic aperture radar (SAR) imagery.</li>
+              <li>Research assistant on the HAVI project (Schmidt Sciences; led by Prof.&nbsp;Jon Chun), which is building an optical character recognition benchmark for historic newspaper archives. My work: literature surveys, research into document-degradation libraries, and a report recommending methods.</li>
+              <li>A local archive of arXiv metadata covering about three million papers, with full-text search, built for work on prognostics and health management.</li>
+              <li>A paper aggregator that queries OpenAlex, Semantic Scholar and arXiv.</li>
             </ul>
           </div>
-        </section>
-
-        <section class="row" aria-labelledby="g-tools">
-          <h3 class="label" id="g-tools">Tools</h3>
-          <div class="row-body">
-            <ul class="plain">
-              <li>A local archive of arXiv metadata covering about three million papers, with full-text search in SQLite, built for work on prognostics and health management.</li>
-              <li>A paper aggregator that queries the OpenAlex, Semantic Scholar and arXiv services.</li>
-            </ul>
-          </div>
-        </section>
+        </details>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="part" id="ventures" aria-labelledby="ventures-h">
-      <h2 id="ventures-h">Ventures</h2>
-      <p class="lead">Arvorean is my main work. The other ventures are listed with their status as of October 2026; most are at an early stage.</p>
+  <!-- ===================== ARVOREAN ===================== -->
+  <section class="band" id="arvorean" aria-labelledby="arvorean-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="arvorean-h">Arvorean Robotics and Automation</h2>
+        <p class="motto">Automation against exploitation.</p>
+        <p>Building rovers to take people out of backbreaking and dangerous manual work, starting with warehouses and factories.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>Founder &amp; Director</dd></div>
+          <div><dt>Incorporated</dt><dd>2026, private limited company</dd></div>
+          <div><dt>CIN</dt><dd class="num">U62010TN2026PTC195993</dd></div>
+        </dl>
+      </div>
 
-      <ul class="rows">
-        <li class="row">
-          <div class="label"><span class="role">Founder and Director</span>Incorporated, 2026</div>
-          <div class="row-body">
-            <h3>Arvorean Robotics and Automation Pvt Ltd</h3>
-            <p>Rovers for heavy and dangerous manual work, described <a href="#arvorean">above</a>.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label"><span class="role">Founder</span>Not yet incorporated</div>
-          <div class="row-body">
-            <h3>Manifolding</h3>
-            <p>A company to help hardware start-ups take a working prototype to a certified product with realistic unit costs and a stable supply chain. The first product is planned as a low-cost, AI-assisted compliance tool for certifications such as those of the Bureau of Indian Standards (BIS), the CE mark and ISO standards, offered as guidance and not as a legal guarantee. Later it is to draw on a network of outside experts who are paid per certified project. I am looking for <span class="nowrap">co-founders</span> in product and engineering, sales, legal and compliance, and manufacturing and certification.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label">Being set up</div>
-          <div class="row-body">
-            <h3>Unmai Research and Engineering Collective <span class="ta" lang="ta">உண்மை</span></h3>
-            <p>A reading group in Chennai, free to join, for people who work on robotics, machine learning, cyber-physical systems, the Internet of Things (IoT), embedded systems and industrial automation, run in partnership with Arvorean Robotics and Automation Pvt Ltd. Unmai is the Tamil word for truth.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label"><span class="role">Co-founder</span>Idea stage</div>
-          <div class="row-body">
-            <h3>Swappable batteries for long-haul electric trucks</h3>
-            <p>A rugged, modular battery for long-haul electric trucks, with the pack split into many smaller modules that can be hot-swapped. Not yet incorporated; two founders and an industry advisor.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label">Planning</div>
-          <div class="row-body">
-            <h3>Branded tender-coconut carts, Chennai</h3>
-            <p>Consistently graded tender coconuts sold from branded carts at one price across the city, with products made from recycled husk during the monsoon, when sales slow. Planned as a limited liability partnership (LLP) run day to day by a hired operator, and the first of several small businesses I intend to build alongside Arvorean.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label"><span class="role">Applicant</span>Grant application</div>
-          <div class="row-body">
-            <h3>IoT communication and soil sensing</h3>
-            <p>A proposal to the Department of Science and Technology’s NIDHI-PRAYAS programme for IoT communication and soil-sensing hardware. The coconut venture’s supply chain is meant to be the first place it is used.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label">Stepped away</div>
-          <div class="row-body">
-            <h3>EngineerChennai</h3>
-            <p>An online store for DIY electronics, aimed at engineering students in Chennai. I built the storefront (plain HTML, CSS and JavaScript, with a Supabase back end, Razorpay payments and Cloudflare Pages hosting) and its logos, then stepped away to concentrate on Arvorean.</p>
-          </div>
-        </li>
-      </ul>
-    </section>
+      <ol class="roadmap">
+        <li class="step now"><span class="when">Now</span><b>Rover</b></li>
+        <li class="step"><span class="when">Next</span><b>Motor-control lab kit</b></li>
+        <li class="step"><span class="when">Planned</span><b>Analogue characterisation kit</b></li>
+        <li class="step"><span class="when">Planned</span><b>555-timer experimenter kit</b></li>
+        <li class="step motor"><span class="when">Longer term, to drive the rovers</span><b>Own reluctance motor</b></li>
+      </ol>
 
-    <section class="part" id="experience" aria-labelledby="experience-h">
-      <h2 id="experience-h">Experience</h2>
-      <ul class="rows">
-        <li class="row">
-          <div class="label">Previously</div>
-          <div class="row-body">
-            <h3>Lead, Robolab</h3>
-            <p class="org">SRM Institute of Science and Technology</p>
-            <p>Led the lab and worked on the first phase of its EEG and brain–computer interface project: collecting a synchronised electroencephalography (EEG) and video dataset with a non-invasive, dry-electrode headset, towards a dataset paper. A pilot set of recordings has been made.</p>
+      <div class="list-head">
+        <h3>Products</h3>
+        <button class="expand-all" type="button" data-scope="arvorean-items" aria-expanded="false">Expand all</button>
+      </div>
+      <div class="items" id="arvorean-items">
+        <details class="item" id="a-rover" data-field="motion" open>
+          <summary>
+            <span class="item-title">The rover</span>
+            <span class="badge">First product</span>
+            <span class="item-line">Bought and fabricated parts, layered firmware, designed for a 30&nbsp;kg payload.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <div class="flow" role="group" aria-label="Rover architecture">
+              <div class="box hl"><b>Raspberry Pi 4B</b>Vision</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box hl"><b>Raspberry Pi Pico 2</b>Motor control</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box"><b>4 motor drivers</b>One per motor</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box"><b>4 planetary gearmotors</b>On an aluminium-extrusion chassis</div>
+            </div>
+            <div class="under">
+              <div class="box"><b>Firmware</b>Strictly layered stack, 1&nbsp;kHz deterministic control loop, bridge to ROS&nbsp;2 (Robot Operating System&nbsp;2)</div>
+            </div>
+            <ul>
+              <li>Built from bought and fabricated parts, so the risk is in integration rather than invention.</li>
+              <li>A separate four-motor tank-drive version, driven from a web page through an ESP32, is already built.</li>
+              <li>Vision pipeline in development.</li>
+              <li>Plan: rent rovers out as a fleet, and sell the same hardware as a research platform.</li>
+            </ul>
           </div>
-        </li>
-        <li class="row">
-          <div class="label">Previously</div>
-          <div class="row-body">
-            <h3>Research assistant, HAVI project</h3>
-            <p class="org">Schmidt Sciences; led by Prof.&nbsp;Jon Chun</p>
-            <p>Worked on a benchmark for optical character recognition (OCR) on historic newspaper archives: literature surveys, research into document-degradation libraries, and a decision-support report recommending methods.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label">Student project</div>
-          <div class="row-body">
-            <h3>Hybrid plant model for Renault Nissan Technology &amp; Business Centre India</h3>
-            <p class="org">Industry–academia collaboration through SRM Institute of Science and Technology</p>
-            <p>One of three students who validated a proof-of-concept hybrid plant model. We delivered a report, presentations and trained models.</p>
-          </div>
-        </li>
-        <li class="row">
-          <div class="label">2026</div>
-          <div class="row-body">
-            <h3>Lecture on Parzen–Rosenblatt kernel density estimation</h3>
-            <p>A two-hour lecture prepared for students with little prior background.</p>
-          </div>
-        </li>
-      </ul>
-    </section>
+        </details>
 
-    <section class="part" id="education" aria-labelledby="education-h">
-      <h2 id="education-h">Education</h2>
-      <ul class="rows">
-        <li class="row">
-          <div class="label">Expected 2027</div>
-          <div class="row-body">
-            <h3>B.Tech, SRM Institute of Science and Technology (SRMIST)</h3>
-            <p>Department of Computational Intelligence, Kattankulathur, Chennai.</p>
+        <details class="item" id="a-kits" data-field="motion">
+          <summary>
+            <span class="item-title">Motor-control lab kit</span>
+            <span class="badge">Next</span>
+            <span class="item-line">A teaching kit for university motor-control courses, with two more kits planned.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <div class="flow" role="group" aria-label="Kit design">
+              <div class="box hl"><b>RP2350A</b>Custom circular board</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box"><b>BTS7960B</b>H-bridge driver</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box"><b>Five motor modules</b>For experiments</div>
+            </div>
+            <p class="feed">Speed estimated from an ADXL345 accelerometer by fast Fourier transform</p>
+            <ul>
+              <li>Designed for courses following the Anna University R2025 and SRM R2021 curricula.</li>
+              <li>An analogue characterisation kit and a 555-timer experimenter kit are planned next.</li>
+            </ul>
           </div>
-        </li>
-        <li class="row">
-          <div class="label">In progress</div>
-          <div class="row-body">
-            <h3>M.S. in Computer Science, University of Colorado Boulder</h3>
-            <p>Online programme, taken through Coursera.</p>
-          </div>
-        </li>
-      </ul>
-    </section>
+        </details>
 
-    <section class="part" id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Contact</h2>
-      <p class="lead">Where it is possible, I would rather meet in person than talk over chat tools.</p>
+        <details class="item" id="a-motor" data-field="motion">
+          <summary>
+            <span class="item-title">Own switched reluctance motor</span>
+            <span class="badge">Longer term</span>
+            <span class="item-line">A 12/10 outer-rotor design, validated by finite-element simulation, meant to drive the rovers.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <figure class="motor">
+              <button class="motor-button" id="motor-button" type="button" aria-label="Advance the rotor in the drawing by one step">
+                <svg viewBox="0 0 400 400" role="img" aria-labelledby="motor-title">
+                  <title id="motor-title">Schematic cross-section of a 12/10 outer-rotor doubly-salient motor</title>
+                  <defs>
+                    <pattern id="hatch-rotor" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="2.5" y1="0" x2="2.5" y2="5"/></pattern>
+                    <pattern id="hatch-stator" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line class="hatch-line" x1="2.5" y1="0" x2="2.5" y2="5"/></pattern>
+                  </defs>
+                  <g class="rotor" id="rotor">
+                    <path class="iron" d="M350.0 200.0A150 150 0 1 1 50.0 200.0A150 150 0 1 1 350.0 200.0ZM184.7 72.9L184.7 91.1A110 110 0 0 1 215.3 91.1L215.3 72.9A128 128 0 0 1 262.3 88.2L251.6 102.9A110 110 0 0 1 276.4 120.9L287.1 106.2A128 128 0 0 1 316.1 146.2L298.9 151.8A110 110 0 0 1 308.3 180.9L325.6 175.3A128 128 0 0 1 325.6 224.7L308.3 219.1A110 110 0 0 1 298.9 248.2L316.1 253.8A128 128 0 0 1 287.1 293.8L276.4 279.1A110 110 0 0 1 251.6 297.1L262.3 311.8A128 128 0 0 1 215.3 327.1L215.3 308.9A110 110 0 0 1 184.7 308.9L184.7 327.1A128 128 0 0 1 137.7 311.8L148.4 297.1A110 110 0 0 1 123.6 279.1L112.9 293.8A128 128 0 0 1 83.9 253.8L101.1 248.2A110 110 0 0 1 91.7 219.1L74.4 224.7A128 128 0 0 1 74.4 175.3L91.7 180.9A110 110 0 0 1 101.1 151.8L83.9 146.2A128 128 0 0 1 112.9 106.2L123.6 120.9A110 110 0 0 1 148.4 102.9L137.7 88.2A128 128 0 0 1 184.7 72.9Z"/>
+                  </g>
+                  <g class="stator">
+                    <path class="iron" d="M187.8 131.1L187.8 93.2A107.5 107.5 0 0 1 212.2 93.2L212.2 131.1A70 70 0 0 1 223.9 134.2L242.9 101.4A107.5 107.5 0 0 1 263.9 113.6L245.0 146.4A70 70 0 0 1 253.6 155.0L286.4 136.1A107.5 107.5 0 0 1 298.6 157.1L265.8 176.1A70 70 0 0 1 268.9 187.8L306.8 187.8A107.5 107.5 0 0 1 306.8 212.2L268.9 212.2A70 70 0 0 1 265.8 223.9L298.6 242.9A107.5 107.5 0 0 1 286.4 263.9L253.6 245.0A70 70 0 0 1 245.0 253.6L263.9 286.4A107.5 107.5 0 0 1 242.9 298.6L223.9 265.8A70 70 0 0 1 212.2 268.9L212.2 306.8A107.5 107.5 0 0 1 187.8 306.8L187.8 268.9A70 70 0 0 1 176.1 265.8L157.1 298.6A107.5 107.5 0 0 1 136.1 286.4L155.0 253.6A70 70 0 0 1 146.4 245.0L113.6 263.9A107.5 107.5 0 0 1 101.4 242.9L134.2 223.9A70 70 0 0 1 131.1 212.2L93.2 212.2A107.5 107.5 0 0 1 93.2 187.8L131.1 187.8A70 70 0 0 1 134.2 176.1L101.4 157.1A107.5 107.5 0 0 1 113.6 136.1L146.4 155.0A70 70 0 0 1 155.0 146.4L136.1 113.6A107.5 107.5 0 0 1 157.1 101.4L176.1 134.2A70 70 0 0 1 187.8 131.1ZM236.0 200.0A36 36 0 1 0 164.0 200.0A36 36 0 1 0 236.0 200.0Z"/>
+                    <path class="coil" d="M213.6 127.3L213.6 97.4L225.7 99.7L218.1 128.2ZM186.4 127.3L186.4 97.4L174.3 99.7L181.9 128.2ZM248.1 143.8L263.1 117.9L272.4 126.0L251.5 146.9ZM224.6 130.2L239.6 104.4L227.8 100.3L220.2 128.8ZM269.8 175.4L295.6 160.4L299.7 172.2L271.2 179.8ZM256.2 151.9L282.1 136.9L274.0 127.6L253.1 148.5ZM272.7 213.6L302.6 213.6L300.3 225.7L271.8 218.1ZM272.7 186.4L302.6 186.4L300.3 174.3L271.8 181.9ZM256.2 248.1L282.1 263.1L274.0 272.4L253.1 251.5ZM269.8 224.6L295.6 239.6L299.7 227.8L271.2 220.2ZM224.6 269.8L239.6 295.6L227.8 299.7L220.2 271.2ZM248.1 256.2L263.1 282.1L272.4 274.0L251.5 253.1ZM186.4 272.7L186.4 302.6L174.3 300.3L181.9 271.8ZM213.6 272.7L213.6 302.6L225.7 300.3L218.1 271.8ZM151.9 256.2L136.9 282.1L127.6 274.0L148.5 253.1ZM175.4 269.8L160.4 295.6L172.2 299.7L179.8 271.2ZM130.2 224.6L104.4 239.6L100.3 227.8L128.8 220.2ZM143.8 248.1L117.9 263.1L126.0 272.4L146.9 251.5ZM127.3 186.4L97.4 186.4L99.7 174.3L128.2 181.9ZM127.3 213.6L97.4 213.6L99.7 225.7L128.2 218.1ZM143.8 151.9L117.9 136.9L126.0 127.6L146.9 148.5ZM130.2 175.4L104.4 160.4L100.3 172.2L128.8 179.8ZM175.4 130.2L160.4 104.4L172.2 100.3L179.8 128.8ZM151.9 143.8L136.9 117.9L127.6 126.0L148.5 146.9Z"/>
+                  </g>
+                  <path class="centre" d="M34 200H366M200 34V366"/>
+                  <g aria-hidden="true">
+                    <text class="note" x="12" y="24">outer rotor, 10 poles</text>
+                    <path class="leader" d="M12 30H156L164.0 65.7"/>
+                    <circle class="leader-end" cx="164.0" cy="65.7" r="2"/>
+                    <text class="note" x="388" y="382" text-anchor="end">stator, 12 poles</text>
+                    <path class="leader" d="M388 388H266L248.0 283.1"/>
+                    <circle class="leader-end" cx="248.0" cy="283.1" r="2"/>
+                    <text class="note" x="12" y="382">winding</text>
+                    <path class="leader" d="M12 388H70L133.7 258.8"/>
+                    <circle class="leader-end" cx="133.7" cy="258.8" r="2"/>
+                  </g>
+                </svg>
+              </button>
+              <figcaption>Schematic cross-section of the topology. Click or tap it to advance the rotor by one step.</figcaption>
+            </figure>
+            <ul>
+              <li>DC-excited, doubly salient, outer rotor; 12 stator poles and 10 rotor poles.</li>
+              <li>Validated by finite-element simulation in FEMM.</li>
+              <li>To be paired with its own controller and a fixed gear reduction, so it runs near its most efficient speed.</li>
+              <li>Meant to drive Arvorean’s rovers, and may also be offered to other builders of mobile robots. A conference paper is planned.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VENTURES ===================== -->
+  <section class="band alt" id="ventures" aria-labelledby="ventures-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="ventures-h">Ventures</h2>
+        <p>One incorporated company and a portfolio in development. Status as of October 2026.</p>
+      </div>
+
+      <ol class="track" style="--n:6">
+        <li class="stage"><span class="stage-name">Idea</span>
+          <ul class="stage-items"><li><a class="chip" data-field="energy" href="#v-truck">Truck batteries</a></li><li><a class="chip" data-field="eco" href="#v-manifolding">Manifolding</a></li></ul></li>
+        <li class="stage"><span class="stage-name">Planning</span>
+          <ul class="stage-items"><li><a class="chip" data-field="agri" href="#v-coconut">Coconut carts</a></li></ul></li>
+        <li class="stage"><span class="stage-name">Grant application</span>
+          <ul class="stage-items"><li><a class="chip" data-field="agri" href="#v-soil">Soil sensing</a></li></ul></li>
+        <li class="stage"><span class="stage-name">Being set up</span>
+          <ul class="stage-items"><li><a class="chip" data-field="eco" href="#v-unmai">Unmai</a></li></ul></li>
+        <li class="stage top"><span class="stage-name">Incorporated</span>
+          <ul class="stage-items"><li><a class="chip" data-field="motion" href="#arvorean">Arvorean</a></li></ul></li>
+        <li class="stage aside"><span class="stage-name">Stepped away</span>
+          <ul class="stage-items"><li><a class="chip" data-field="eco" href="#v-engineerchennai">EngineerChennai</a></li></ul></li>
+      </ol>
+
+      <div class="list-head">
+        <h3>Portfolio</h3>
+        <button class="expand-all" type="button" data-scope="venture-items" aria-expanded="false">Expand all</button>
+      </div>
+      <div class="items" id="venture-items">
+        <div class="item" data-field="motion">
+          <a class="row" href="#arvorean">
+            <span class="item-title">Arvorean Robotics and Automation</span>
+            <span class="badge">Incorporated 2026</span>
+            <span class="item-line">Founder &amp; Director. Rovers for dangerous manual work; see the section above.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m7.5 15 5-5-5-5"/></svg>
+          </a>
+        </div>
+
+        <details class="item" id="v-manifolding" data-field="eco">
+          <summary>
+            <span class="item-title">Manifolding</span>
+            <span class="badge">Concept</span>
+            <span class="item-line">A planned company to take hardware start-ups from a breadboard prototype to a certified product.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <div class="flow">
+              <div class="box"><b>Breadboard prototype</b>From the start-up</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box hl" style="flex-grow:1.6"><b>Productisation</b>Cost optimisation, a stable supply chain, certification (BIS, CE, ISO)</div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <div class="box"><b>Certified product</b>With realistic unit economics</div>
+            </div>
+            <ul>
+              <li>Planned first product: a low-cost, AI-assisted compliance tool, offered as guidance rather than a legal guarantee.</li>
+              <li>Planned later: outside experts, paid per certified project.</li>
+              <li>Founder; recruiting co-founders in product and engineering, sales, legal and compliance, and manufacturing and certification. Not yet incorporated.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="item" id="v-truck" data-field="energy">
+          <summary>
+            <span class="item-title">Swappable truck batteries</span>
+            <span class="badge">Idea stage</span>
+            <span class="item-line">Modular, hot-swappable battery packs for long-haul electric trucks.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
+              <li>Co-founder. Not yet incorporated; two founders and an industry advisor.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="item" id="v-unmai" data-field="eco">
+          <summary>
+            <span class="item-title">Unmai Research and Engineering Collective <span class="ta" lang="ta">உண்மை</span></span>
+            <span class="badge">Being set up</span>
+            <span class="item-line">A reading group in Chennai, free to join, for people working on robotics, machine learning and embedded systems.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
+              <li>Topics: robotics, machine learning, cyber-physical systems, the Internet of Things (IoT), embedded systems and industrial automation.</li>
+              <li>In partnership with Arvorean Robotics and Automation.</li>
+              <li>Unmai is the Tamil word for truth.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="item" id="v-soil" data-field="agri">
+          <summary>
+            <span class="item-title">IoT soil sensing</span>
+            <span class="badge">Grant application</span>
+            <span class="item-line">A NIDHI-PRAYAS proposal for IoT communication and soil-sensing hardware.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
+              <li>Applicant to the Department of Science and Technology’s NIDHI-PRAYAS programme.</li>
+              <li>The coconut venture’s supply chain is meant to be the first place it is used.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="item" id="v-coconut" data-field="agri">
+          <summary>
+            <span class="item-title">Tender-coconut carts</span>
+            <span class="badge">Planning</span>
+            <span class="item-line">A planned fleet of branded carts selling consistently graded tender coconuts at one price across Chennai.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
+              <li>Idea: make products from recycled husk during the monsoon, when sales slow.</li>
+              <li>Planned as a limited liability partnership (LLP) run day to day by a hired operator.</li>
+              <li>The first of several small businesses I intend to build alongside Arvorean.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="item" id="v-engineerchennai" data-field="eco">
+          <summary>
+            <span class="item-title">EngineerChennai</span>
+            <span class="badge">Stepped away</span>
+            <span class="item-line">An online store for DIY electronics, aimed at engineering students in Chennai.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
+              <li>Built the storefront (HTML, CSS and JavaScript, with Supabase, Razorpay and Cloudflare Pages) and its logos.</li>
+              <li>Stepped away to concentrate on Arvorean.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BACKGROUND + CONTACT ===================== -->
+  <section class="band" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="items" style="margin-bottom:3rem">
+        <details class="item" id="background">
+          <summary>
+            <span class="item-title">Education and student work</span>
+            <span class="badge">Background</span>
+            <span class="item-line">B.Tech at SRMIST, expected 2027; enrolled in the online M.S. in Computer Science at the University of Colorado Boulder.</span>
+            <svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"/></svg>
+          </summary>
+          <div class="item-body">
+            <ul>
+              <li>B.Tech, Department of Computational Intelligence, SRM Institute of Science and Technology (SRMIST), Kattankulathur. Expected 2027.</li>
+              <li>M.S. in Computer Science, University of Colorado Boulder, online through Coursera. In progress.</li>
+              <li>Led Robolab at SRMIST, and worked on the first phase of its EEG and brain–computer interface project: a synchronised electroencephalography (EEG) and video dataset, with pilot recordings made.</li>
+              <li>One of three students who validated a proof-of-concept hybrid plant model for Renault Nissan Technology &amp; Business Centre India, through SRMIST.</li>
+              <li>Preparing a two-hour lecture on Parzen–Rosenblatt kernel density estimation (2026).</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="sec-head" style="margin-bottom:0">
+        <h2 id="contact-h">Contact</h2>
+        <p>Where possible, I prefer meeting in person to chat tools.</p>
+      </div>
       <!-- CONTACT LINKS: add or remove lines here -->
       <ul class="contact-links">
-        <li><a href="mailto:ashwinsriramulu7@gmail.com">ashwinsriramulu7@gmail.com</a></li>
-        <li><a href="https://orcid.org/0009-0006-2905-5648">ORCID <span class="numbers">0009-0006-2905-5648</span></a></li>
+        <li><a href="mailto:ashwinsriramulu7@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>ashwinsriramulu7@gmail.com</a></li>
+        <li><a href="https://orcid.org/0009-0006-2905-5648"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 8.5v7M12 8.5h1.5a3.5 3.5 0 0 1 0 7H12z" stroke-linecap="round"/></svg>ORCID 0009-0006-2905-5648</a></li>
+        <li><a href="https://ieeexplore.ieee.org/document/11737480"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>HYDRA-MC on IEEE Xplore</a></li>
         <!-- <li><a href="https://github.com/YOUR-USERNAME">GitHub</a></li> -->
         <!-- <li><a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a></li> -->
       </ul>
-    </section>
+    </div>
+  </section>
 
-  </main>
+</main>
 
-  <footer>
-    Ashwin Sriramulu, Chennai. Last revised October 2026.
-  </footer>
+<footer>
+  <div class="wrap">Ashwin Sriramulu, Chennai. Last revised October 2026.</div>
+</footer>
 
-</div>
+<div class="tip" id="tip" role="tooltip" hidden></div>
 
 <script>
-  /* Turns the rotor in the drawing: three steps on load, one step per click.
-     Twelve degrees is one step of a three-phase machine with ten rotor poles. */
-  (function () {
-    var rotor = document.getElementById('rotor');
-    var button = document.getElementById('motor-button');
-    if (!rotor || !button || !window.requestAnimationFrame) return;
-    var STEP = 12, DURATION = 520, PAUSE = 140;
-    var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    var angle = 0, target = 0, running = false;
+(function () {
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-    function draw(a) { rotor.setAttribute('transform', 'rotate(' + a.toFixed(2) + ' 200 200)'); }
+  /* ---- open the right expander when a link points at it ---- */
+  function reveal(id, smooth) {
+    var el = document.getElementById(id);
+    if (!el) return false;
+    if (el.tagName === 'DETAILS') el.open = true;
+    var parent = el.parentElement && el.parentElement.closest('details');
+    if (parent) parent.open = true;
+    el.scrollIntoView({ behavior: smooth && !reduce ? 'smooth' : 'auto', block: 'start' });
+    if (el.classList.contains('item') || el.classList.contains('theory')) {
+      el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    }
+    return true;
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    if (reveal(id, true)) { e.preventDefault(); history.replaceState(null, '', '#' + id); }
+  });
+  if (location.hash.length > 1) setTimeout(function () { reveal(location.hash.slice(1), false); }, 60);
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('details').forEach(function (d) { d.open = true; });
+  });
+
+  /* ---- expand all / collapse all ---- */
+  document.querySelectorAll('.expand-all').forEach(function (btn) {
+    var scope = document.getElementById(btn.dataset.scope);
+    function sync() {
+      var all = scope.querySelectorAll('details'), open = scope.querySelectorAll('details[open]');
+      var full = all.length && open.length === all.length;
+      btn.textContent = full ? 'Collapse all' : 'Expand all';
+      btn.setAttribute('aria-expanded', full ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function () {
+      var all = scope.querySelectorAll('details'), open = scope.querySelectorAll('details[open]');
+      var target = open.length !== all.length;
+      all.forEach(function (d) { d.open = target; });
+      sync();
+    });
+    scope.addEventListener('toggle', sync, true);
+    sync();
+  });
+
+  /* ---- work map: links, highlighting, tooltip ---- */
+  var map = document.getElementById('work-map');
+  var svg = map.querySelector('.map-links');
+  var tip = document.getElementById('tip');
+  var LINKS = [
+    ['koopman', 'thermo'], ['srm', 'rover'], ['rover', 'arvorean'],
+    ['kits', 'arvorean'], ['soil', 'coconut'], ['unmai', 'arvorean', 'partner']
+  ];
+  function node(id) { return map.querySelector('[data-node="' + id + '"]'); }
+  function draw() {
+    if (getComputedStyle(svg).display === 'none') { svg.innerHTML = ''; return; }
+    var m = map.getBoundingClientRect(), out = '', R = 8;
+    var ventRight = 0;
+    map.querySelectorAll('.map-cell[data-stage="Ventures"] .node').forEach(function (n) {
+      ventRight = Math.max(ventRight, n.getBoundingClientRect().right - m.left);
+    });
+    LINKS.forEach(function (l) {
+      var A = node(l[0]), B = node(l[1]);
+      if (!A || !B) return;
+      var a = A.getBoundingClientRect(), b = B.getBoundingClientRect();
+      var ax0 = a.left - m.left, ax1 = a.right - m.left, ay = a.top - m.top + a.height / 2;
+      var bx0 = b.left - m.left, bx1 = b.right - m.left, by = b.top - m.top + b.height / 2;
+      var s = by < ay ? -1 : 1, d;
+      if (bx0 > ax1 + 12) {
+        /* target in a later column: a smooth curve from right edge to left edge */
+        var mx = (ax1 + bx0) / 2;
+        d = 'M' + (ax1 + 2) + ' ' + ay + ' C' + mx + ' ' + ay + ' ' + mx + ' ' + by + ' ' + (bx0 - 2) + ' ' + by;
+      } else if (A.closest('.map-cell').dataset.stage === 'Ventures') {
+        /* same column, last column: a bracket routed outside every chip on the right */
+        var xr = Math.min(Math.max(ventRight, ax1, bx1) + 16, m.width - 6);
+        d = 'M' + (ax1 + 2) + ' ' + ay + ' H' + (xr - R) + ' Q' + xr + ' ' + ay + ' ' + xr + ' ' + (ay + s * R) +
+            ' V' + (by - s * R) + ' Q' + xr + ' ' + by + ' ' + (xr - R) + ' ' + by + ' H' + (bx1 + 2);
+      } else {
+        /* same column elsewhere: a bracket on the left */
+        var xl = Math.min(ax0, bx0) - 14;
+        d = 'M' + (ax0 - 2) + ' ' + ay + ' H' + (xl + R) + ' Q' + xl + ' ' + ay + ' ' + xl + ' ' + (ay + s * R) +
+            ' V' + (by - s * R) + ' Q' + xl + ' ' + by + ' ' + (xl + R) + ' ' + by + ' H' + (bx0 - 2);
+      }
+      out += '<path class="link" data-a="' + l[0] + '" data-b="' + l[1] + '" d="' + d + '"' +
+        (l[2] === 'partner' ? '' : ' marker-end="url(#arrowhead)"') + '/>';
+    });
+    svg.setAttribute('viewBox', '0 0 ' + m.width + ' ' + m.height);
+    svg.innerHTML = '<defs><marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="arrowhead" d="M0 0 L10 5 L0 10 z"/></marker></defs>' + out;
+  }
+  function highlight(id) {
+    if (!id) { map.classList.remove('is-hover'); map.querySelectorAll('.hi').forEach(function (x) { x.classList.remove('hi'); }); return; }
+    map.classList.add('is-hover');
+    var keep = [id];
+    LINKS.forEach(function (l) { if (l[0] === id) keep.push(l[1]); if (l[1] === id) keep.push(l[0]); });
+    map.querySelectorAll('.node').forEach(function (n) { n.classList.toggle('hi', keep.indexOf(n.dataset.node) > -1); });
+    svg.querySelectorAll('.link').forEach(function (p) { p.classList.toggle('hi', p.dataset.a === id || p.dataset.b === id); });
+  }
+  function showTip(el) {
+    tip.textContent = el.dataset.tip || '';
+    tip.hidden = false;
+    var r = el.getBoundingClientRect(), t = tip.getBoundingClientRect();
+    var x = r.right + 10, y = r.top + r.height / 2 - t.height / 2;
+    if (x + t.width > window.innerWidth - 8) x = r.left - t.width - 10;
+    if (x < 8) { x = Math.min(Math.max(8, r.left), window.innerWidth - t.width - 8); y = r.bottom + 8; }
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  map.querySelectorAll('.node').forEach(function (n) {
+    n.addEventListener('pointerenter', function (e) { if (e.pointerType === 'touch') return; highlight(n.dataset.node); showTip(n); });
+    n.addEventListener('pointerleave', function () { highlight(null); tip.hidden = true; });
+    n.addEventListener('focus', function () { highlight(n.dataset.node); showTip(n); });
+    n.addEventListener('blur', function () { highlight(null); tip.hidden = true; });
+  });
+  window.addEventListener('scroll', function () { tip.hidden = true; }, { passive: true });
+  if (window.ResizeObserver) new ResizeObserver(draw).observe(map); else window.addEventListener('resize', draw);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  draw();
+
+  /* ---- motor drawing: three steps when first opened, one per click ---- */
+  var rotor = document.getElementById('rotor'), motorBtn = document.getElementById('motor-button');
+  var motorItem = document.getElementById('a-motor');
+  if (rotor && motorBtn && window.requestAnimationFrame) {
+    var STEP = 12, DURATION = 520, PAUSE = 140, angle = 0, target = 0, running = false, played = false;
+    function setAngle(v) { rotor.setAttribute('transform', 'rotate(' + v.toFixed(2) + ' 200 200)'); }
     function ease(t) { return 1 - Math.pow(1 - t, 3); }
-
     function run() {
       if (running || angle >= target) return;
       running = true;
@@ -562,25 +1148,17 @@
       function frame(now) {
         if (start === null) start = now;
         var t = Math.min(1, (now - start) / DURATION);
-        angle = from + (to - from) * ease(t);
-        draw(angle);
+        angle = from + (to - from) * ease(t); setAngle(angle);
         if (t < 1) { requestAnimationFrame(frame); return; }
-        angle = to;
-        running = false;
-        setTimeout(run, PAUSE);
+        angle = to; running = false; setTimeout(run, PAUSE);
       }
       requestAnimationFrame(frame);
     }
-
-    function advance(steps) {
-      target += STEP * steps;
-      if (reduce) { angle = target; draw(angle); return; }
-      run();
-    }
-
-    button.addEventListener('click', function () { advance(1); });
-    if (!reduce) setTimeout(function () { advance(3); }, 700);
-  })();
+    function advance(n) { target += STEP * n; if (reduce) { angle = target; setAngle(angle); return; } run(); }
+    motorBtn.addEventListener('click', function () { advance(1); });
+    motorItem.addEventListener('toggle', function () { if (motorItem.open && !played) { played = true; setTimeout(function () { advance(3); }, 350); } });
+  }
+})();
 </script>
 </body>
 </html>
